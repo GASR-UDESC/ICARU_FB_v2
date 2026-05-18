@@ -43,7 +43,7 @@ def genFBType(root,outdir):
 	
 	
 	if(root.attrib["Name"] in LYBRARY):
-		print "Using from lib for '%s'." % (root.attrib["Name"])
+		print ("Using from lib for '%s'." % (root.attrib["Name"]))
 		
 		libp = os.path.join(AppPath, 'library')
 		sf = open(os.path.join(libp , root.attrib["Name"]+'.st'))
@@ -203,7 +203,7 @@ def read(filename, outdir):
 	if(root.tag == 'FBType'):
 		return genFBType(root, outdir)
 	else:
-		print 'File is not a FB.'
+		print ('File is not a FB.')
 	return None
 	#print root.tag
 	
