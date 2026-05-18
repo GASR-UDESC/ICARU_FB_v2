@@ -56,11 +56,11 @@ def getIndexOfFreeSpace(size):
 			if(i == 0):
 				cl = getConnectionsLen()
 				if DEVICE_MAP['table'][i]['size']-size < cl:
-					print '(icaru_mapper) Error: No memory for connections.'
+					print ('(icaru_mapper) Error: No memory for connections.')
 					return -1
 			return i
 		i = i - 1
-	print '(icaru_mapper) Error: No memory.'
+	print ('(icaru_mapper) Error: No memory.')
 	return -1
 	
 	
@@ -91,7 +91,7 @@ def alloc(name, size, otype, obj):
 		DEVICE_MAP['table'][i]['obj'] = obj
 		DEVICE_MAP['table'][i]['loaded'] = False
 	else:
-		print '(icaru_mapper) Unknow Error 1.'
+		print ('(icaru_mapper) Unknow Error 1.')
 		return False
 	save_obj(DEVICE_MAP, devicemapfilename)
 	return True
@@ -124,7 +124,7 @@ def getMemoryToWrite(fbname):
 	
 def CreateFbType(fbobj):
 	if fbTypeExists(fbobj['name']):
-		print "Error: FBType '%s' already exists." % (fbobj['name'])
+		print ("Error: FBType '%s' already exists." % (fbobj['name']))
 		return False
 	if alloc(fbobj['name'], fbobj['size'], 'FBTYPE', fbobj):
 		mwrite = getMemoryToWrite(fbobj['name'])
@@ -136,7 +136,7 @@ def getAddressOfFb(fbname):
 	for l in DEVICE_MAP["table"]:
 		if(l["name"] == fbname):
 			return l['address']
-	print '(icaru_mapper) Error: Address of %s not founded.' % (fbname)
+	print ('(icaru_mapper) Error: Address of %s not founded.' % (fbname))
 	return 0
 	
 def getFb(fbname):
@@ -150,7 +150,7 @@ def CreateFbInstance(fbobj):
 	fbobj['hex'].insert(0,ad & 0xFF)
 	fbobj['hex'].insert(0,ad >> 8)
 	if fbInstanceExists(fbobj['name']):
-		print "Error: FBInstance '%s' already exists." % (fbobj['name'])
+		print ("Error: FBInstance '%s' already exists." % (fbobj['name']))
 		return False
 	if alloc(fbobj['name'], fbobj['size'], 'FBINSTANCE', fbobj):
 		return True
@@ -194,7 +194,7 @@ def DeleteAllConnWith(fbname):
 	
 def CreateConn(fromfbvar,tofbvar,size,evt):
 	if getConnectionsLen() +7 >= DEVICE_MAP['table'][0]['size']:
-		print '(icaru_mapper) Error: no memory for more connections.'
+		print ('(icaru_mapper) Error: no memory for more connections.')
 		return False
 	for c in DEVICE_MAP["connections"]:
 		if not c['valid']:
@@ -231,7 +231,7 @@ def WritePar(tofbvar,value):
 
 	
 if __name__ == "__main__":
-	print 'Initing map'
+	print ('Initing map')
 	nm = {'device_config':{}, 'memory_len':4000}
 	setMap('testmap', nm)
 	
@@ -251,7 +251,8 @@ if __name__ == "__main__":
 	
 	CreateFbType(fbobj2)
 	for l in DEVICE_MAP['table']:
-		print l
+		print (l)
+		
 	
 
 
