@@ -53,7 +53,7 @@ def setMap(mapfilename, device_config):
 	"""
 	global DEVICE_MAP
 	devicemapfilename = mapfilename
-	print '(icaru_mapper) Always creating a new map.'
+	print ('(icaru_mapper) Always creating a new map.')
 	if not os.path.exists(mapfilename) or True:
 		startfb = {'name':'START','fbtype':'E_RESTART'}
 		startfb['varsmap'] = {'COLD': {'address':0, 'size':1, 'type':'EVENT'}, 'WARM': {'address':1, 'size':1, 'type':'EVENT'}, 'STOP': {'address':2, 'size':1, 'type':'EVENT'},'SUBMAP': {'address':3, 'size':2,'type':'UINT'}}
@@ -72,7 +72,7 @@ def getIndexOfFreeSpace(size):
 		if DEVICE_MAP['table'][i]['valid']==False and DEVICE_MAP['table'][i]['size'] >= size:
 			return i
 		i = i - 1
-	print '(icaru_mapper) Error: No memory.'
+	print ('(icaru_mapper) Error: No memory.')
 	return -1
 	
 def alloc(size):
@@ -88,16 +88,16 @@ def alloc(size):
 		DEVICE_MAP['table'].insert(i+1,nline)
 		DEVICE_MAP['table'][i+1]['name']=''
 		if(DEVICE_MAP['table'][i+1]['address'] + DEVICE_MAP['table'][i+1]['size'] > DEVICE_MAP['memory_len']):
-			print 'Error: (mapper) address outside max memory'
-			print 'Memory: ',DEVICE_MAP['memory_len']
-			print DEVICE_MAP['table'][i+1]
+			print ('Error: (mapper) address outside max memory')
+			print ('Memory: ',DEVICE_MAP['memory_len'])
+			print (DEVICE_MAP['table'][i+1])
 			exit()
 		return i+1
 	elif DEVICE_MAP['table'][i]['size'] == size:
 		DEVICE_MAP['table'][i]['valid'] = True
 		DEVICE_MAP['table'][i]['name']=''
 	else:
-		print '(icaru_mapper) No memory space.'
+		print ('(icaru_mapper) No memory space.')
 		return -2
 	#save_obj(DEVICE_MAP, devicemapfilename)
 	return i
@@ -107,14 +107,14 @@ def extend(i, nsize):
 
 def printTable():
 	for r in DEVICE_MAP['table']:
-		print '%10d %10d %15s %15s' % (r['address'],r['size'], r['name'],r['valid'])
+		print ('%10d %10d %15s %15s' % (r['address'],r['size'], r['name'],r['valid']))
 		if('connections' in r):
 			e = getElement('__conn_'+r['name'])
 			if e != None:
-				print 'C AT:', e['address']
+				print ('C AT:', e['address'])
 			for c in r['connections']:					
-				print '        ',
-				print [("%X"%(i)) for i in c]
+				print ('        ',)
+				print ([("%X"%(i)) for i in c])
 				
 		
 		
@@ -202,7 +202,7 @@ def fbAddType(fbobj):
 		return False
 
 	if fbobj['name'] in builtintypes:
-		print '(icaru_mapper) INFO: FB type "%s" already is in ICARU_VM, is a builtin type.' % (fbobj['name'])
+		print ('(icaru_mapper) INFO: FB type "%s" already is in ICARU_VM, is a builtin type.' % (fbobj['name']))
 		
 		#print '(icaru_mapper) Returning True.'
 		return True
@@ -236,10 +236,10 @@ def getByteCodeForVarMap(map):
 def fbAddInstance(fbname, fbtype):
 	global builtintypes
 	if fbExists(fbname):
-		print "(icaru_mapper) FB Instance '%s' already in ICARU_VM." % (fbname)
+		print ("(icaru_mapper) FB Instance '%s' already in ICARU_VM." % (fbname))
 		return False
 	if not fbExists(fbtype):
-		print "(icaru_mapper) Error: FBTYPE '%s' doesn't exists." % (fbtype)
+		print ("(icaru_mapper) Error: FBTYPE '%s' doesn't exists." % (fbtype))
 		return False
 	fb = getFb(fbtype)
 	
@@ -262,10 +262,10 @@ def fbAddInstance(fbname, fbtype):
 	#Write on real device
 	if(fbtype == 'E_MERGE'):
 		DEVICE_MAP['table'][i]['bytecode'][4] = 2
-		print 'Setting E_MERGE with 2 input events.'
+		print ('Setting E_MERGE with 2 input events.')
 	if(fbtype == 'E_SPLIT'):
 		DEVICE_MAP['table'][i]['bytecode'][5] = 2
-		print 'Setting E_MERGE with 2 input events.'
+		print ('Setting E_MERGE with 2 input events.')
 		
 	icaru_com.writeIcaruMemory(DEVICE_MAP['table'][i]['address'], DEVICE_MAP['table'][i]['bytecode'], DEVICE_MAP['address'])
 	return True
@@ -353,7 +353,7 @@ def ConnDel(fromfbvar,tofbvar):
 	conn0 = [0,0,0,0,0,0,0]
 	
 	if not 'connections' in fb:
-		print 'No connections in'+l[0]
+		print ('No connections in'+l[0])
 	else:
 		i = 0
 		count =0
@@ -402,19 +402,19 @@ def writePar(tofbvar, value):
 			value = value.replace('T#','')
 			value = value.replace('MS','')
 		else:
-			print "'%s' not supported, only ms."
-	print 'T::',t,
+			print ("'%s' not supported, only ms.")
+	print ('T::',t,)
 	if(t == 'BYTE' or t=='EVENT' or t == 'BOOL'):
 		val = int(value) & 0xFF
 		fb = getFb(l[0])
 		vp = fb['varsmap'][l[1]]['address']+4
 		fb['bytecode'][vp] = val
-		print 'pos: ',fb['address']+vp
+		print ('pos: ',fb['address']+vp)
 		#write to device		
 		icaru_com.writeIcaruMemory(fb['address']+vp, [val], DEVICE_MAP['address'])
 		
 		tfb = fb['fbtype']
-		print 'tfb: ',tfb
+		print ('tfb: ',tfb)
 		print l[1]
 		if(tfb == 'SUBL_5' and l[1]=='ID'):
 			addToSublList(val, fb['address'])
