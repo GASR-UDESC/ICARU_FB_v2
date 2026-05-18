@@ -56,7 +56,7 @@ READ_MEMORY = 0xA0
 WRITE_CHECK = 0xC0
 def setId(iid):
 	if (iid & 0xE0) > 0:
-		print 'Error, id must be "0 < id < 32".' 
+		print ('Error, id must be "0 < id < 32".' )
 		return False
 	global ENTER_PROGRAMMING
 	global EXIT_PROGRAMMING
@@ -88,8 +88,8 @@ def createPacksWriteMemory(data):
 def writePack(pack):
 	global comsock
 	comsock.send(pack)
-	print 'WRITING: ',
-	print [("%X"%(ord(i))) for i in pack]
+	print ('WRITING: ',)
+	print ([("%X"%(ord(i))) for i in pack])
 	
 def getChecksum(pack):
 	cs = 0;
@@ -110,7 +110,7 @@ def writeIcaruMemory(address, data, iid):
 	cs = getChecksum(data)
 	rcs = None
 	
-	print "Waiting Checksum (%d)..." % (cs)
+	print ("Waiting Checksum (%d)..." % (cs))
 	
 	#comment to avoid checksum
 	"""
@@ -185,7 +185,7 @@ def readPack():
 			if(c == 0x55):
 				return data + chr(0x55)
 	
-	print "%X" % (c)
+	print ("%X" % (c))
 		
 	return None
 
