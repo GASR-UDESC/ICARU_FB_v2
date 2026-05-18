@@ -17,7 +17,7 @@ serversocket = socket.socket(
 serversocket.bind(('localhost', 61900))
 serversocket.listen(5)
 
-print 'Server started'
+print ('Server started')
 
 
 CLIENTS = []
@@ -26,7 +26,7 @@ OUTBUF=[]
 SERIALPORT = None
 
 def printHex(p):
-	print [("%X"%(i)) for i in p]
+	print (("%X"%(i)) for i in p)
 	
 _socketgetbytes=[]
 def socketget(bytes, sock):
@@ -55,7 +55,7 @@ def readPack(comsock):
 			if(data[-1] == 0x55):
 				data.append(0x55)
 				return data
-	print 'Refused pack: ', printHex(data)
+	print ('Refused pack: ', printHex(data))
 	return None
 	
 def client_thread(sock):
@@ -65,10 +65,10 @@ def client_thread(sock):
 				if(socketget(1,sock) == 0x5A):
 					if(socketget(1,sock) == 0x55):
 						CLIENTS.append(sock)
-						print 'App FB connected'
+						print ('App FB connected')
 		else:
 			CLIENTSCONFIG.append(sock)
-			print 'Config tool connected'
+			print ('Config tool connected')
 	
 		while True:		
 			#p = readPack(sock)
@@ -91,8 +91,8 @@ def client_thread(sock):
 			#	print 'TOSEND: ' + '.'*len(OUTBUF)
 			#else:
 			#	return 
-	except Exception, e:
-		print e
+	except Exception as e:
+		print (e)
 		import traceback
 		traceback.print_exc()
 	
@@ -125,23 +125,23 @@ def serialIn_thread():
 								SERIALPORT.setRTS(False)
 							#OUTBUF[0][1].send(tk)
 							del OUTBUF[0]
-							print 'WRITE: '+'.'*len(OUTBUF)
+							print ('WRITE: '+'.'*len(OUTBUF))
 					elif(pack[2] in range(0x01,0xB0) and pack[3] == 0xF1 and pack[4] == 0xF1):
 						pass
 					else:
 						#send to all clients
-						print "PACK RECEIVED:"
+						print ("ACK RECEIVED:")
 						printHex(pack)
 						delc = []
 						ind=0
 						for c in CLIENTSCONFIG:
 							try:
-								print 'RESPONDING: '
+								print ('RESPONDING: ')
 								printHex(pack)
 								c.send(''.join([chr(i) for i in pack]))
-							except Exception, e:
+							except Exception as e:
 								delc.append(ind)
-								print e
+								print (e)
 								import traceback
 								traceback.print_exc()
 							ind=ind+1
@@ -155,9 +155,9 @@ def serialIn_thread():
 								#print 'RESPONDING: '
 								#printHex(pack)
 								c.send(''.join([chr(i) for i in pack]))
-							except Exception, e:
+							except Exception as e:
 								delc.append(ind)
-								print e
+								print (e)
 								import traceback
 								traceback.print_exc()
 							ind=ind+1
@@ -166,7 +166,7 @@ def serialIn_thread():
 							del CLIENTS[i]
 								
 		else:
-			print chr(c),
+			print (chr(c),)
 					
 					
 				
@@ -176,7 +176,7 @@ def serialIn_thread():
 	
 
 if not flagExist('-p') and not flagExist('-n'):
-	print 'Need serial port number: -p <number> or -n <name>'
+	print ('Need serial port number: -p <number> or -n <name>')
 	exit()
 	
 SERIALPORT = None
@@ -188,10 +188,10 @@ elif flagExist('-n'):
 	SERIALPORT = serial.Serial(PORTNUM)
 	
 if flagExist('--rts'):
-	print 'Using RTS when sending.'
+	print ('Using RTS when sending.')
 	USERTS = True
 else:
-	print 'Not using RTS. ICARU connected direct to COM port.'
+	print ('Not using RTS. ICARU connected direct to COM port.')
 """	
 PORTNUM = getPPar('-p')	
 SERIALPORT = serial.Serial(int(PORTNUM)-1)
@@ -202,9 +202,9 @@ SERIALPORT.setBaudrate(38400)
 thread.start_new_thread(serialIn_thread, ())
 	
 while 1:
-	print 'Waiting client...',
+	print ('Waiting client...',)
 	(clientsocket, address) = serversocket.accept()
-	print 'OK'
+	print ('OK')
 	thread.start_new_thread(client_thread, (clientsocket,))
 	#CLIENTS.append(clientsocket)
 	
