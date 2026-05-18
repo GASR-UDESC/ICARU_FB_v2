@@ -62,7 +62,7 @@ while True:
 	if p != None:
 		pack = [ord(i) for i in p]
 		if(pack[2]==202):
-			print pack
+			print (pack)
 			data = ''
 			"""
 			for i in range(5):
@@ -73,8 +73,8 @@ while True:
 
 				#data = data + chr(0x51)+ chr(pack[i+3])
 			#sock.send(data)
-			print "DATA: "+data+' len: %d' % (len(data) )
-			print str2hex(data)
+			print ("DATA: "+data+' len: %d' % (len(data) ))
+			print (tr2hex(data))
 			#sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 			sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 			ttl = struct.pack('b',1)
