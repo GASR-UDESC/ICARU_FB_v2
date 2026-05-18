@@ -415,7 +415,7 @@ def writePar(tofbvar, value):
 		
 		tfb = fb['fbtype']
 		print ('tfb: ',tfb)
-		print l[1]
+		print (l[1])
 		if(tfb == 'SUBL_5' and l[1]=='ID'):
 			addToSublList(val, fb['address'])
 		return True
