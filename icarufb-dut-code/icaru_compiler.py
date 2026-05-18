@@ -33,7 +33,7 @@ def run(argv1, outdir):
 	#generate .st
 	stname = fb2st.read(argv1,outdir)
 	if stname == None:
-		print "Invalid FB Type: ", argv1
+		print ("Invalid FB Type: ", argv1)
 		exit()
 	#compile
 
@@ -44,13 +44,13 @@ def run(argv1, outdir):
 
 	compdir = os.path.dirname(os.path.realpath(sys.argv[0]))
 	comp = os.path.join(compdir, compiler_name)
-	print comp
-	print os.path.join(outdir,stname)
+	print (comp)
+	print (os.path.join(outdir,stname))
 	r = subprocess.call([comp, '-o','temp',os.path.join(outdir,stname)])
 	if int(r) == 0:
 		pass
 	else:
-		print "ERROR compiling: '%s' (%d)" % (stname, r)
+		print ("ERROR compiling: '%s' (%d)" % (stname, r))
 
 
 if __name__ == '__main__':
