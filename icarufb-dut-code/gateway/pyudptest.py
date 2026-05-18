@@ -35,8 +35,8 @@ sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
 
 while True:
 	d = sock.recv(1024)
-	print d
-	print str2hex(d)
+	print (d)
+	print (str2hex(d))
 #	inet.send("#FFA1"+str2hex(chr(71))+str2hex(d[3])+str2hex(d[1])+"$")
 	
 	
