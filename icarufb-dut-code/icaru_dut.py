@@ -40,7 +40,7 @@ serversocket = socket.socket(
 serversocket.bind(('localhost', 61494))
 serversocket.listen(5)
 
-print 'Server started'
+print ('Server started')
 
 TEMP_DIR = 'temp'
 
@@ -60,7 +60,7 @@ def createFB(fbname, fbtype):
 		b.remove('')
 		bcode = [int(i) for i in b]
 		fbobj['bytecode'] = bcode
-		print fbobj['bytecode']
+		print (fbobj['bytecode'])
 		
 		f = open(os.path.join(TEMP_DIR, fbtype+'.map'))
 		c = f.read()
@@ -85,15 +85,15 @@ def createFB(fbname, fbtype):
 		fbobj['varsmap'] = vmap	
 		
 		icaru_mapper.fbAddType(fbobj)
-		print '(dut) FB Type "%s" added.' % (fbtype)
+		print ('(dut) FB Type "%s" added.' % (fbtype))
 	else:
-		print '(dut) FB "%s" already in ICARU_VM.' % (fbtype)
-	print 'Adding instance "%s".' % (fbname)
+		print ('(dut) FB "%s" already in ICARU_VM.' % (fbtype))
+	print ('Adding instance "%s".' % (fbname))
 	if(icaru_mapper.fbAddInstance(fbname, fbtype)):
-		print "(dut) FB %s (%s) created." % (fbname, fbtype)
+		print ("(dut) FB %s (%s) created." % (fbname, fbtype))
 		return True
 	
-	print "(dut) ERROR: FB %s (%s) not created." % (fbname, fbtype)
+	print ("(dut) ERROR: FB %s (%s) not created." % (fbname, fbtype))
 	return False
 		
 
@@ -102,7 +102,7 @@ def client_thread(sock):
 	received = ''
 	
 	while 1:
-		print 'Waiting for more data...'
+		print ('Waiting for more data...')
 		rcv =  sock.recv(2048)
 		if rcv == '':
 			break
@@ -143,7 +143,7 @@ def client_thread(sock):
 			resp=''
 			if root.attrib['Action'] == 'START':
 				if not icaru_mapper.writePar('START.COLD','1'):
-						print "(dut) ERROR: Can't write parameter %s=%s." %(r,v)
+						print ("(dut) ERROR: Can't write parameter %s=%s." %(r,v))
 				resp = '<Response ID="%s"/>' % ('')
 				icaru_mapper.printTable()
 			else:
@@ -152,7 +152,7 @@ def client_thread(sock):
 					r = p.attrib['Reference']
 					v = p.attrib['Value']
 					if not icaru_mapper.writePar(r,v):
-						print "(dut) ERROR: Can't write parameter %s=%s." %(r,v)
+						print ("(dut) ERROR: Can't write parameter %s=%s." %(r,v))
 					resp = '<Response ID="%s"><Parameter Reference="%s"/></Response>' % (root.attrib['ID'], root.findall('Parameter')[0].attrib["Reference"])
 				elif len(root.findall('FB'))>0:
 					fb = root.findall('FB')[0]
@@ -166,9 +166,9 @@ def client_thread(sock):
 					fromfbvar = c.attrib['Source']
 					tofbvar = c.attrib['Destination']
 					if(icaru_mapper.ConnAdd(fromfbvar,tofbvar)):
-						print ''
+						print ('')
 					else:
-						print '(dut) ERROR Creating connection %s->%s' % (fromfbvar, tofbvar)
+						print ('(dut) ERROR Creating connection %s->%s' % (fromfbvar, tofbvar))
 					resp = '<Response ID="%s"/>' % (root.attrib['ID'])
 				else:
 					resp = '<Response ID="%s"/>' % (root.attrib['ID'])
@@ -176,23 +176,23 @@ def client_thread(sock):
 			l = len(resp)	
 			#resp = chr(0x50)+chr(0)+chr(0)+chr(0x50)+chr(l>>8)+chr(l&0xFF)+resp
 			resp = chr(0x50)+chr(l>>8)+chr(l&0xFF)+resp
-			print 'RUN: '+cmd 
+			print ('RUN: '+cmd) 
 			
-			print 'RESP: ['+resp+']'
-			print ' '
+			print ('RESP: ['+resp+']')
+			print (' ')
 			cmd = ''
 			sock.send(resp)
-		except Exception, e:
-			print 'Parse error... '
-			print '['+cmd+']'
-			print e
+		except Exception as e:
+			print ('Parse error... ')
+			print ('['+cmd+']')
+			print (e)
 			import traceback
 			traceback.print_exc()
 			
 
 			
 def printUsage():
-	print 'Usage: python icaru_dut.py -m map.map -da device_address -dm device_memory_bytes -l library_dir'
+	print ('Usage: python icaru_dut.py -m map.map -da device_address -dm device_memory_bytes -l library_dir')
 
 	
 DEVICE_MEM = 0
@@ -221,9 +221,9 @@ while 1:
 	config['address'] = DEVICE_ADDR
 	icaru_mapper.setMap(MAPFNAME, config)
 		
-	print 'Waiting client...',
+	print ('Waiting client...',)
 	(clientsocket, address) = serversocket.accept()
-	print 'OK'
+	print ('OK')
 	thread.start_new_thread(client_thread, (clientsocket,))
 	
 		
