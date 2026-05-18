@@ -63,8 +63,8 @@ sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
 
 while True:
 	d = sock.recv(1024)
-	print d
-	print str2hex(d)
+	print (d)
+	print (str2hex(d))
 	p = list(d)
 	p = [ord(i) for i in p]
 	pack=[]
@@ -83,7 +83,7 @@ while True:
 			pack.append(0)
 			del p[0]
 		else:
-			print 'Not recognized: %X' % (p[0])
+			print ('Not recognized: %X' % (p[0]))
 			
 	while len(pack)<5:
 		pack.append(0)
