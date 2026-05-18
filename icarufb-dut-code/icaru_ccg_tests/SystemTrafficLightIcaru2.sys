@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE System SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd" >
+<System Name="SystemTrafficLightIcaru2" Comment="System Configuration" >
+  <Identification Standard="61499-1" />
+  <VersionInfo Organization="Holobloc Inc." Version="0.4" Author="JHC" Date="2009-03-05" Remarks="Deleted Application." />
+  <VersionInfo Organization="Rockwell Automation" Version="0.3" Author="JHC" Date="2003-12-05" Remarks="Renamed from NEWSYSTEM." />
+  <VersionInfo Organization="Rockwell Automation" Version="0.2" Author="JHC" Date="2002-11-05" Remarks="Fixed missing (empty) FBD in Application." />
+  <VersionInfo Organization="Rockwell Automation" Version="0.1" Author="JHC" Date="2002-01-17" Remarks="Minor cleanup" />
+  <VersionInfo Organization="Rockwell Automation" Version="0.0" Author="JHC" Date="2000-05-27" />
+  <Device Name="DEV_CONTROL" Type="FRAME_DEVICE" x="716.6666" y="750.0" >
+    <Parameter Name="BOUNDS" Value="[100,100,150,200]" />
+    <Parameter Name="GRID" Value="[1,4]" />
+    <Resource Name="RES2" Type="PANEL_RESOURCE" x="716.6666" y="722.22217" >
+      <Parameter Name="ROWS" Value="4" />
+      <FBNetwork >
+        <FB Name="scontrol" Type="SEM_CONTROL" x="1338.8888" y="394.44443" >
+        </FB>
+        <FB Name="cycle1" Type="E_CYCLE" x="816.6666" y="255.55554" >
+          <Parameter Name="DT" Value="t#1000ms" />
+        </FB>
+        <FB Name="car1" Type="CAR_SEMAPHORE" x="2444.4443" y="244.44443" >
+        </FB>
+        <FB Name="light_red" Type="OUT_BOOL" x="3449.9998" y="38.888885" >
+          <Parameter Name="LABEL" Value="&#34;RED&#34;" />
+          <Parameter Name="C1" Value="[255,0,0]" />
+        </FB>
+        <FB Name="light_yellow" Type="OUT_BOOL" x="3988.8887" y="511.11108" >
+          <Parameter Name="C1" Value="[255,255,0]" />
+          <Parameter Name="LABEL" Value="&#34;YELLOW&#34;" />
+        </FB>
+        <FB Name="light_green" Type="OUT_BOOL" x="4527.778" y="1005.55554" >
+          <Parameter Name="C1" Value="[0,255,0]" />
+          <Parameter Name="LABEL" Value="&#34;GREEN&#34;" />
+        </FB>
+        <FB Name="pub1" Type="PUBLISH_2" x="2750.0" y="1261.1111" >
+          <Parameter Name="QI" Value="1" />
+          <Parameter Name="ID" Value="&#34;225.0.0.1:61401&#34;" />
+        </FB>
+        <EventConnections>
+          <Connection Source="START.COLD" Destination="scontrol.INIT" dx1="872.22217" />
+          <Connection Source="light_red.INITO" Destination="light_yellow.INIT" dx1="127.77777" dx2="55.555553" dy="1077.7777" />
+          <Connection Source="light_yellow.INITO" Destination="light_green.INIT" dx1="150.0" dx2="55.555553" dy="1033.3333" />
+          <Connection Source="light_red.CNF" Destination="light_yellow.REQ" dx1="55.555553" />
+          <Connection Source="light_yellow.CNF" Destination="light_green.REQ" dx1="55.555553" dx2="55.555553" dy="1661.1111" />
+          <Connection Source="scontrol.INITO" Destination="car1.INIT" dx1="55.555553" />
+          <Connection Source="car1.INITO" Destination="light_red.INIT" dx1="55.555553" />
+          <Connection Source="car1.CNF" Destination="light_red.REQ" dx1="205.55554" />
+          <Connection Source="scontrol.CNF" Destination="car1.REQ" dx1="227.77777" />
+          <Connection Source="cycle1.EO" Destination="scontrol.REQ" dx1="55.555553" />
+          <Connection Source="scontrol.CNF" Destination="pub1.REQ" dx1="244.44443" />
+          <Connection Source="light_green.INITO" Destination="pub1.INIT" dx1="55.555553" dx2="561.1111" dy="1205.5555" />
+          <Connection Source="pub1.INITO" Destination="cycle1.START" dx1="100.0" dx2="394.44443" dy="883.3333" />
+        </EventConnections>
+        <DataConnections>
+          <Connection Source="scontrol.SEMAPHORE_1" Destination="car1.CYCLE" dx1="55.555553" />
+          <Connection Source="car1.RED" Destination="light_red.IN" dx1="55.555553" />
+          <Connection Source="car1.YELLOW" Destination="light_yellow.IN" dx1="161.1111" />
+          <Connection Source="car1.GREEN" Destination="light_green.IN" dx1="122.22221" />
+          <Connection Source="scontrol.SEMAPHORE_2" Destination="pub1.SD_1" dx1="133.33333" />
+        </DataConnections>
+      </FBNetwork>
+    </Resource>
+  </Device>
+  <Device Name="DEV_SLAVE" Type="DEV_ICARU_PC" x="1505.5555" y="1550.0" >
+    <Resource Name="RES1" Type="ICARU_RES2" x="1027.7777" y="922.22217" >
+      <FBNetwork >
+        <FB Name="START" Type="E_RESTART" x="72.22222" y="11.111111" >
+        </FB>
+        <FB Name="car2" Type="CAR_SEMAPHORE" x="1138.8888" y="111.11111" >
+        </FB>
+        <FB Name="walk_ctl" Type="WALKER_SEMAPHORE" x="1294.4443" y="1288.8888" >
+        </FB>
+        <FB Name="sub1" Type="SUBSCRIBE_2" x="150.0" y="744.4444" >
+          <Parameter Name="ID" Value="71" />
+        </FB>
+        <FB Name="light_red" Type="IO_WRITER" x="1916.6666" y="5.5555553" >
+          <Parameter Name="SD_1" Value="1" />
+        </FB>
+        <FB Name="light_yellow" Type="IO_WRITER" x="2588.8887" y="138.88889" >
+          <Parameter Name="SD_1" Value="2" />
+        </FB>
+        <FB Name="light_green" Type="IO_WRITER" x="3227.7776" y="238.88889" >
+          <Parameter Name="SD_1" Value="3" />
+        </FB>
+        <FB Name="walker_red" Type="IO_WRITER" x="2255.5554" y="1172.2222" >
+          <Parameter Name="SD_1" Value="4" />
+        </FB>
+        <FB Name="walker_green" Type="IO_WRITER" x="3066.6665" y="1311.1111" >
+          <Parameter Name="SD_1" Value="5" />
+        </FB>
+        <FB Name="split1" Type="E_SPLIT" x="555.55554" y="11.111111" >
+        </FB>
+        <FB Name="split2" Type="E_SPLIT" x="744.4444" y="822.22217" >
+        </FB>
+        <EventConnections>
+          <Connection Source="sub1.INITO" Destination="walk_ctl.INIT" dx1="100.0" />
+          <Connection Source="light_red.INIT0" Destination="light_yellow.INIT" dx1="94.44444" dx2="138.88889" dy="877.7778" />
+          <Connection Source="light_yellow.INIT0" Destination="light_green.INIT" dx1="72.22222" dx2="100.0" dy="894.4444" />
+          <Connection Source="walk_ctl.INITO" Destination="walker_red.INIT" dx1="111.11111" dx2="55.555553" dy="877.7778" />
+          <Connection Source="walker_red.INIT0" Destination="walker_green.INIT" dx1="172.22221" dx2="55.555553" dy="883.3333" />
+          <Connection Source="walk_ctl.SETO" Destination="walker_red.REQ" dx1="200.0" dx2="111.11111" dy="577.7778" />
+          <Connection Source="light_red.CNF" Destination="light_yellow.REQ" dx1="61.111107" dx2="55.555553" dy="822.22217" />
+          <Connection Source="light_yellow.CNF" Destination="light_green.REQ" dx1="50.0" dx2="55.555553" dy="827.7778" />
+          <Connection Source="walker_red.CNF" Destination="walker_green.REQ" dx1="55.555553" dx2="55.555553" dy="883.3333" />
+          <Connection Source="START.COLD" Destination="split1.EI" dx1="55.555553" />
+          <Connection Source="split1.EO1" Destination="car2.INIT" dx1="155.55554" />
+          <Connection Source="split1.EO2" Destination="sub1.INIT" dx1="77.77777" dx2="88.888885" dy="438.8889" />
+          <Connection Source="sub1.IND" Destination="split2.EI" dx1="188.88889" />
+          <Connection Source="split2.EO2" Destination="walk_ctl.SET" dx1="55.555553" dx2="55.555553" dy="616.6666" />
+          <Connection Source="car2.INITO" Destination="light_red.INIT" dx1="55.555553" />
+          <Connection Source="split2.EO1" Destination="car2.REQ" dx1="55.555553" />
+          <Connection Source="car2.CNF" Destination="light_red.REQ" dx1="55.555553" />
+        </EventConnections>
+        <DataConnections>
+          <Connection Source="sub1.RD_1" Destination="car2.CYCLE" dx1="50.0" />
+          <Connection Source="sub1.RD_2" Destination="walk_ctl.CYCLE" dx1="172.22221" />
+          <Connection Source="car2.RED" Destination="light_red.SD_2" dx1="111.11111" />
+          <Connection Source="car2.YELLOW" Destination="light_yellow.SD_2" dx1="88.888885" />
+          <Connection Source="car2.GREEN" Destination="light_green.SD_2" dx1="55.555553" />
+          <Connection Source="walk_ctl.RED" Destination="walker_red.SD_2" dx1="133.33333" dx2="55.555553" dy="1444.4443" />
+          <Connection Source="walk_ctl.GREEN" Destination="walker_green.SD_2" dx1="55.555553" dx2="55.555553" dy="1283.3333" />
+        </DataConnections>
+      </FBNetwork>
+    </Resource>
+  </Device>
+</System>

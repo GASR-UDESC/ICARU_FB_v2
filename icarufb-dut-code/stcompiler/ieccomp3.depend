@@ -1,0 +1,2060 @@
+# depslib dependency file v1.0
+1365539388 source:c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	"listadin.h"
+
+1438101705 h"
+
+1364953151 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1365016224 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\instset.h
+
+1358271236 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\listadin.h
+
+1358794625 source:c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1439062187 
+
+1358785260 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\errors.h
+
+1365084512 source:c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\instset.c
+	<stdio.h>
+	"instset.h"
+
+1439498425 "
+
+1364935379 source:c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1366048754 source:c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"errors.h"
+	"instcon.h"
+	"atributos.h"
+	"iec.tab.c"
+
+1358782805 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\atributos.h
+	"listadin.h"
+
+1374241957 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"lex.yy.c"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+
+1374241957 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\lex.yy.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<stdlib.h>
+
+1374241957 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\iec.tab.h
+
+1375728628 source:c:\users\udesc\desktop\ieccomp3\algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	"listadin.h"
+	"listadin.c"
+	"instset.c"
+
+1366059588 c:\users\udesc\desktop\ieccomp3\algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1375733053 c:\users\udesc\desktop\ieccomp3\instset.h
+
+1366059554 c:\users\udesc\desktop\ieccomp3\listadin.h
+
+1366059582 source:c:\users\udesc\desktop\ieccomp3\errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1366059580 c:\users\udesc\desktop\ieccomp3\errors.h
+
+1375733067 source:c:\users\udesc\desktop\ieccomp3\instset.c
+	<stdio.h>
+	"instset.h"
+
+1366059556 source:c:\users\udesc\desktop\ieccomp3\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1375731407 source:c:\users\udesc\desktop\ieccomp3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"errors.h"
+	"instcon.h"
+	"atributos.h"
+	"iec.tab.c"
+
+1366059588 c:\users\udesc\desktop\ieccomp3\atributos.h
+	"listadin.h"
+
+1375733275 c:\users\udesc\desktop\ieccomp3\iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"lex.yy.c"
+	<stdio.h>
+	<alloca.h>
+	<malloc.h>
+
+1375733275 c:\users\udesc\desktop\ieccomp3\lex.yy.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<stdlib.h>
+
+1375733275 c:\users\udesc\desktop\ieccomp3\iec.tab.h
+
+1366059584 source:c:\users\udesc\desktop\ieccomp3\ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	<stdio.h>
+	<stdlib.h>
+
+1366059582 c:\users\udesc\desktop\ieccomp3\ecc.h
+	"algcode.h"
+
+1366059550 c:\users\udesc\desktop\ieccomp3\symbols.h
+
+1366059552 source:c:\users\udesc\desktop\ieccomp3\symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+
+1365711365 source:c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	<stdio.h>
+	<stdlib.h>
+
+1365016242 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\ecc.h
+	"algcode.h"
+
+1365711340 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\symbols.h
+
+1365711341 source:c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+
+1366059548 source:c:\users\udesc\desktop\ieccomp3\vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1366059548 c:\users\udesc\desktop\ieccomp3\vector.h
+
+1366059586 source:c:\users\udesc\desktop\ieccomp3\device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1366059584 c:\users\udesc\desktop\ieccomp3\device.h
+	"symbols.h"
+	"vector.h"
+
+1374252746 source:c:\users\udesc\desktop\ieccomp3\instcon.c
+	"instcon.h"
+	<stdio.h>
+
+1374252080 c:\users\udesc\desktop\ieccomp3\instcon.h
+
+1365711367 source:c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1365539382 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\device.h
+	"symbols.h"
+	"vector.h"
+
+1365539339 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\vector.h
+
+1374241182 source:c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\instcon.c
+	"instcon.h"
+	<stdio.h>
+
+1374241280 c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\instcon.h
+
+1365539341 source:c:\users\leandro\dropbox\pos mca\tcc\comp\ieccomp3\vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1366059556 c:\users\udesc\desktop\ieccomp3\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1375733067 c:\users\udesc\desktop\ieccomp3\instset.c
+	<stdio.h>
+	"instset.h"
+
+1378150483 source:c:\users\udesc\desktop\ieccomp4\algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listadin.h"
+	"listadin.c"
+	"instset.c"
+
+1378150603 c:\users\udesc\desktop\ieccomp4\algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1376290436 c:\users\udesc\desktop\ieccomp4\instset.h
+
+1375798294 c:\users\udesc\desktop\ieccomp4\listadin.h
+
+1375798294 c:\users\udesc\desktop\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1376290478 c:\users\udesc\desktop\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1375798320 source:c:\users\udesc\desktop\ieccomp4\device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1375798318 c:\users\udesc\desktop\ieccomp4\device.h
+	"symbols.h"
+	"vector.h"
+
+1376290948 c:\users\udesc\desktop\ieccomp4\symbols.h
+
+1375798288 c:\users\udesc\desktop\ieccomp4\vector.h
+
+1375798316 c:\users\udesc\desktop\ieccomp4\errors.h
+
+1376291502 source:c:\users\udesc\desktop\ieccomp4\ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	<stdio.h>
+	<stdlib.h>
+
+1375798316 c:\users\udesc\desktop\ieccomp4\ecc.h
+	"algcode.h"
+
+1375798316 source:c:\users\udesc\desktop\ieccomp4\errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1378150659 source:c:\users\udesc\desktop\ieccomp4\instcon.c
+	"instcon.h"
+	"algcode.h"
+	<stdio.h>
+
+1375798300 c:\users\udesc\desktop\ieccomp4\instcon.h
+
+1376290478 source:c:\users\udesc\desktop\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1375798294 source:c:\users\udesc\desktop\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1375798292 source:c:\users\udesc\desktop\ieccomp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"errors.h"
+	"instcon.h"
+	"atributos.h"
+	"iec.tab.c"
+
+1375798322 c:\users\udesc\desktop\ieccomp4\atributos.h
+	"listadin.h"
+
+1378150677 c:\users\udesc\desktop\ieccomp4\iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"lex.yy.c"
+	<stdio.h>
+	<alloca.h>
+	<malloc.h>
+
+1378150677 c:\users\udesc\desktop\ieccomp4\lex.yy.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<stdlib.h>
+
+1378150677 c:\users\udesc\desktop\ieccomp4\iec.tab.h
+
+1375798288 source:c:\users\udesc\desktop\ieccomp4\vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1378150640 source:c:\users\udesc\desktop\ieccomp4\symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+
+1378351628 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1378351628 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\device.h
+	"symbols.h"
+	"vector.h"
+
+1388598536 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\symbols.h
+
+1378351586 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\vector.h
+
+1378351622 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\errors.h
+
+1388600322 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1378351602 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instcon.c
+	"instcon.h"
+	"algcode.h"
+	<stdio.h>
+
+1378351600 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instcon.h
+
+1391193826 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1391193804 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instset.h
+
+1378351594 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1378351594 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\listadin.h
+
+1387232248 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"pilha.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"atributos.h"
+	"iec.tab.c"
+
+1378351632 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1388860350 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\atributos.h
+	"listadin.h"
+
+1391201012 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"lex.yy.c"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+
+1378351624 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\ecc.h
+	"algcode.h"
+
+1391201012 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\lex.yy.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<stdlib.h>
+
+1391201012 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\iec.tab.h
+
+1388598314 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"atributos.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+
+1378351588 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1389661316 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listadin.h"
+	"listadin.c"
+	"instset.c"
+
+1378351594 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1391193826 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1390241808 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	"stack.h"
+	<stdio.h>
+	<stdlib.h>
+
+1379067900 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\asmltab.c
+	"asmltab.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"listadin.h"
+	"algcode.h"
+
+1379065562 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\asmltab.h
+
+1386882590 source:c:\users\udesc\desktop\implementacao\comp\ieccomp4\algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listadin.h"
+	"listadin.c"
+	"instset.c"
+
+1378337232 c:\users\udesc\desktop\implementacao\comp\ieccomp4\algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1386029758 c:\users\udesc\desktop\implementacao\comp\ieccomp4\instset.h
+
+1378337194 c:\users\udesc\desktop\implementacao\comp\ieccomp4\listadin.h
+
+1378337194 c:\users\udesc\desktop\implementacao\comp\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1386030322 c:\users\udesc\desktop\implementacao\comp\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1379053500 source:c:\users\udesc\desktop\implementacao\comp\ieccomp4\asmltab.c
+	"asmltab.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"listadin.h"
+	"algcode.h"
+
+1379051162 c:\users\udesc\desktop\implementacao\comp\ieccomp4\asmltab.h
+
+1378337186 c:\users\udesc\desktop\implementacao\comp\ieccomp4\vector.h
+
+1378337222 c:\users\udesc\desktop\implementacao\comp\ieccomp4\errors.h
+
+1378337228 source:c:\users\udesc\desktop\implementacao\comp\ieccomp4\device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1378337228 c:\users\udesc\desktop\implementacao\comp\ieccomp4\device.h
+	"symbols.h"
+	"vector.h"
+
+1378337190 c:\users\udesc\desktop\implementacao\comp\ieccomp4\symbols.h
+
+1380342078 source:c:\users\udesc\desktop\implementacao\comp\ieccomp4\ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	<stdio.h>
+	<stdlib.h>
+
+1378337224 c:\users\udesc\desktop\implementacao\comp\ieccomp4\ecc.h
+	"algcode.h"
+
+1378337224 source:c:\users\udesc\desktop\implementacao\comp\ieccomp4\errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1378337202 source:c:\users\udesc\desktop\implementacao\comp\ieccomp4\instcon.c
+	"instcon.h"
+	"algcode.h"
+	<stdio.h>
+
+1378337200 c:\users\udesc\desktop\implementacao\comp\ieccomp4\instcon.h
+
+1386030322 source:c:\users\udesc\desktop\implementacao\comp\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1378337194 source:c:\users\udesc\desktop\implementacao\comp\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1386960970 source:c:\users\udesc\desktop\implementacao\comp\ieccomp4\symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+
+1378337188 source:c:\users\udesc\desktop\implementacao\comp\ieccomp4\vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1378304834 source:c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listadin.h"
+	"listadin.c"
+	"instset.c"
+
+1378304832 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1379005816 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instset.h
+
+1378304794 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\listadin.h
+
+1378304794 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1379006002 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1379021100 source:c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\asmltab.c
+	"asmltab.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"listadin.h"
+	"algcode.h"
+
+1379018762 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\asmltab.h
+
+1378304786 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\vector.h
+
+1378304822 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\errors.h
+
+1378304828 source:c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1378304828 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\device.h
+	"symbols.h"
+	"vector.h"
+
+1378304790 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\symbols.h
+
+1380309678 source:c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	<stdio.h>
+	<stdlib.h>
+
+1378304824 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\ecc.h
+	"algcode.h"
+
+1378304824 source:c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1378304802 source:c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instcon.c
+	"instcon.h"
+	"algcode.h"
+	<stdio.h>
+
+1378304800 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instcon.h
+
+1379006002 source:c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1378304794 source:c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1380225402 source:c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"atributos.h"
+	"iec.tab.c"
+
+1378304830 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\atributos.h
+	"listadin.h"
+
+1380483467 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"lex.yy.c"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+
+1380482722 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\lex.yy.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<stdlib.h>
+
+1380483467 c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\iec.tab.h
+
+1378304792 source:c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+
+1378304788 source:c:\documents and settings\desenvolvimento\meus documentos\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1389661314 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listadin.h"
+	"listadin.c"
+	"instset.c"
+
+1378351632 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1388846590 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instset.h
+
+1378351594 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\listadin.h
+
+1378351594 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1388603552 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1379067900 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\asmltab.c
+	"asmltab.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"listadin.h"
+	"algcode.h"
+
+1379065562 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\asmltab.h
+
+1378351586 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\vector.h
+
+1378351622 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\errors.h
+
+1378351628 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1378351628 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\device.h
+	"symbols.h"
+	"vector.h"
+
+1388598536 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\symbols.h
+
+1390241808 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	"stack.h"
+	<stdio.h>
+	<stdlib.h>
+
+1378351624 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\ecc.h
+	"algcode.h"
+
+1388600322 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1378351602 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instcon.c
+	"instcon.h"
+	"algcode.h"
+	<stdio.h>
+
+1378351600 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instcon.h
+
+1378351594 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1387232248 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"pilha.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"atributos.h"
+	"iec.tab.c"
+
+1388860350 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\atributos.h
+	"listadin.h"
+
+1391098272 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"lex.yy.c"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+
+1391098272 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\lex.yy.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<stdlib.h>
+
+1391098272 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\iec.tab.h
+
+1388598314 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"atributos.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+
+1378351588 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1388603552 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1307138884 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\pilha.h
+
+1387217848 source:c:\users\udesc\desktop\implementacao\comp\ieccomp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"pilha.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"atributos.h"
+	"iec.tab.c"
+
+1307124484 c:\users\udesc\desktop\implementacao\comp\ieccomp4\pilha.h
+
+1378337230 c:\users\udesc\desktop\implementacao\comp\ieccomp4\atributos.h
+	"listadin.h"
+
+1387306551 c:\users\udesc\desktop\implementacao\comp\ieccomp4\iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"lex.yy.c"
+	<stdio.h>
+	<alloca.h>
+	<malloc.h>
+
+1387306551 c:\users\udesc\desktop\implementacao\comp\ieccomp4\lex.yy.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<stdlib.h>
+
+1387306551 c:\users\udesc\desktop\implementacao\comp\ieccomp4\iec.tab.h
+
+1307138884 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\pilha.h
+
+1388600712 source:d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listadin.h"
+	"listadin.c"
+	"instset.c"
+
+1378351632 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1388846589 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\instset.h
+
+1378351594 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\listadin.h
+
+1378351594 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1388603550 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1379067900 source:d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\asmltab.c
+	"asmltab.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"listadin.h"
+	"algcode.h"
+
+1379065562 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\asmltab.h
+
+1378351586 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\vector.h
+
+1378351622 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\errors.h
+
+1378351628 source:d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1378351628 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\device.h
+	"symbols.h"
+	"vector.h"
+
+1388598535 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\symbols.h
+
+1380356478 source:d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	<stdio.h>
+	<stdlib.h>
+
+1378351624 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\ecc.h
+	"algcode.h"
+
+1388600320 source:d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1378351602 source:d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\instcon.c
+	"instcon.h"
+	"algcode.h"
+	<stdio.h>
+
+1378351600 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\instcon.h
+
+1388603550 source:d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\instset.c
+	<stdio.h>
+	"instset.h"
+
+1378351594 source:d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1387232248 source:d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"pilha.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"atributos.h"
+	"iec.tab.c"
+
+1307138884 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\pilha.h
+
+1388860349 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\atributos.h
+	"listadin.h"
+
+1388867272 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"lex.yy.c"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+
+1388867272 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\lex.yy.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<stdlib.h>
+
+1388867272 d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\iec.tab.h
+
+1388598313 source:d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"atributos.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+
+1378351588 source:d:\documents and settings\administrador\meus documentos\implementacao\comp\ieccomp4\vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1390241868 c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\stack.h
+
+1390241855 source:c:\users\jna\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\stack.c
+	"stack.h"
+
+1390241868 c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\stack.h
+
+1390241856 source:c:\users\leandro\dropbox\pos mca\tcc\implementacao\comp\ieccomp4\stack.c
+	"stack.h"
+
+1426953864 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listadin.h"
+	"listadin.c"
+	"instset.c"
+
+1426953864 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1426953865 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\instset.h
+
+1426953865 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\listadin.h
+
+1426953865 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1426953865 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\instset.c
+	<stdio.h>
+	"instset.h"
+
+1426953864 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\asmltab.c
+	"asmltab.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"listadin.h"
+	"algcode.h"
+
+1426953864 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\asmltab.h
+
+1426953865 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\vector.h
+
+1426953864 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\errors.h
+
+1426953864 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1426953864 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\device.h
+	"symbols.h"
+	"vector.h"
+
+1426953865 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\symbols.h
+
+1426953864 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1426953865 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\instcon.c
+	"instcon.h"
+	"algcode.h"
+	<stdio.h>
+
+1426953865 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\instcon.h
+
+1426953865 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\instset.c
+	<stdio.h>
+	"instset.h"
+
+1426953865 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1426953865 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"pilha.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"atributos.h"
+	"iec.tab.c"
+
+1426953865 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\pilha.h
+
+1426953864 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\atributos.h
+	"listadin.h"
+
+1427587625 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"lex.yy.c"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+
+1426953864 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\ecc.h
+	"algcode.h"
+
+1427587625 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\lex.yy.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<stdlib.h>
+
+1427587625 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\iec.tab.h
+
+1426953865 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\stack.c
+	"stack.h"
+
+1426953865 c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\stack.h
+
+1426953865 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"atributos.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+
+1426953865 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1427587088 source:c:\users\leandrop\dropbox\academico\icarufb\dist\stcompiler\ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	"stack.h"
+	<stdio.h>
+	<stdlib.h>
+
+1439059900 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listadin.h"
+	"listadin.c"
+	"instset.c"
+
+1438101704 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/instset.h
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/listadin.h
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/instset.c
+	<stdio.h>
+	"instset.h"
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/asmltab.c
+	"asmltab.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"listadin.h"
+	"algcode.h"
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/asmltab.h
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/vector.h
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/errors.h
+
+1439061697 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/device.h
+	"symbols.h"
+	"vector.h"
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/symbols.h
+
+1439062762 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	"stack.h"
+	<stdio.h>
+	<stdlib.h>
+
+1439059925 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/ecc.h
+	"algcode.h"
+
+1439060850 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/stack.h
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/instcon.c
+	"instcon.h"
+	"algcode.h"
+	<stdio.h>
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/instcon.h
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/instset.c
+	<stdio.h>
+	"instset.h"
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"pilha.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"atributos.h"
+	"iec.tab.c"
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/pilha.h
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/atributos.h
+	"listadin.h"
+
+1439070213 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"lex.yy.c"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+
+1439070213 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/lex.yy.c
+	<stdio.h>
+	<string.h>
+	<errno.h>
+	<stdlib.h>
+	<inttypes.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<unistd.h>
+
+1439070213 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/iec.tab.h
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/stack.c
+	"stack.h"
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"atributos.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+
+1439062187 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1438101705 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\asmltab.c
+	"asmltab.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"listadin.h"
+	"algcode.h"
+
+1438101705 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\asmltab.h
+
+1438101705 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\vector.h
+
+1438101705 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\errors.h
+
+1438101705 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\listadin.h
+
+1438101704 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1438101705 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\instset.h
+
+1439061697 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1438101705 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\device.h
+	"symbols.h"
+	"vector.h"
+
+1439498466 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\symbols.h
+
+1439498106 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	"stack.h"
+	<stdio.h>
+	<stdlib.h>
+	"ospath.h"
+
+1439498451 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\ecc.h
+	"algcode.h"
+
+1439060850 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\stack.h
+
+1438101705 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1438101705 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\instcon.c
+	"instcon.h"
+	"algcode.h"
+	<stdio.h>
+
+1438101705 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\instcon.h
+
+1438101705 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\instset.c
+	<stdio.h>
+	"instset.h"
+
+1438101705 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1438101705 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\stack.c
+	"stack.h"
+
+1439498404 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"atributos.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+	"ospath.h"
+
+1438101705 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\atributos.h
+	"listadin.h"
+
+1439062187 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1439497974 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listadin.h"
+	"ospath.h"
+	"listadin.c"
+	"instset.c"
+
+1439497672 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\ospath.h
+
+1438101705 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1438101705 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\instset.c
+	<stdio.h>
+	"instset.h"
+
+1439498425 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"pilha.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"atributos.h"
+	"iec.tab.c"
+	"ecc.h"
+	"symbols.h"
+
+1438101705 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\pilha.h
+
+1439498471 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"lex.yy.c"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+
+1439498471 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\lex.yy.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<stdlib.h>
+
+1439498471 c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\iec.tab.h
+
+1439497743 source:c:\users\jna\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\ospath.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ospath.h"
+
+1439497974 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listadin.h"
+	"ospath.h"
+	"listadin.c"
+	"instset.c"
+
+1438101704 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1438101705 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\instset.h
+
+1438101705 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\listadin.h
+
+1439497672 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\ospath.h
+
+1438101705 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1438101705 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\instset.c
+	<stdio.h>
+	"instset.h"
+
+1438101705 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\asmltab.c
+	"asmltab.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"listadin.h"
+	"algcode.h"
+
+1438101705 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\asmltab.h
+
+1438101705 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\vector.h
+
+1438101705 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\errors.h
+
+1439061697 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1438101705 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\device.h
+	"symbols.h"
+	"vector.h"
+
+1439498466 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\symbols.h
+
+1439498106 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	"stack.h"
+	<stdio.h>
+	<stdlib.h>
+	"ospath.h"
+
+1439498451 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\ecc.h
+	"algcode.h"
+
+1439060850 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\stack.h
+
+1438101705 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1438101705 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\instcon.c
+	"instcon.h"
+	"algcode.h"
+	<stdio.h>
+
+1438101705 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\instcon.h
+
+1438101705 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\instset.c
+	<stdio.h>
+	"instset.h"
+
+1438101705 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1439498425 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"pilha.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"atributos.h"
+	"iec.tab.c"
+	"ecc.h"
+	"symbols.h"
+
+1438101705 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\pilha.h
+
+1438101705 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\atributos.h
+	"listadin.h"
+
+1440363973 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"lex.yy.c"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+
+1440363973 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\lex.yy.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<io.h>
+	<stdlib.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<stdlib.h>
+
+1440363973 c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\iec.tab.h
+
+1439497743 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\ospath.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ospath.h"
+
+1438101705 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\stack.c
+	"stack.h"
+
+1439498404 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"atributos.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+	"ospath.h"
+
+1439062187 source:c:\users\leandrop\dropbox\workspacegeneric\icarufb-dut-code\stcompiler\vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+
+1439497974 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/algcode.c
+	"algcode.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listadin.h"
+	"ospath.h"
+	"listadin.c"
+	"instset.c"
+
+1438101704 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/algcode.h
+	<string.h>
+	"instset.h"
+	"listadin.h"
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/instset.h
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/listadin.h
+
+1439497672 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/ospath.h
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/instset.c
+	<stdio.h>
+	"instset.h"
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/asmltab.c
+	"asmltab.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"listadin.h"
+	"algcode.h"
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/asmltab.h
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/vector.h
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/errors.h
+
+1439061697 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/device.c
+	"device.h"
+	"vector.h"
+	"errors.h"
+	<string.h>
+	<stdio.h>
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/device.h
+	"symbols.h"
+	"vector.h"
+
+1439498466 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/symbols.h
+
+1439498106 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/ecc.c
+	"ecc.h"
+	"errors.h"
+	"symbols.h"
+	"stack.h"
+	<stdio.h>
+	<stdlib.h>
+	"ospath.h"
+
+1439498451 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/ecc.h
+	"algcode.h"
+
+1439060850 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/stack.h
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/errors.c
+	"errors.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/instcon.c
+	"instcon.h"
+	"algcode.h"
+	<stdio.h>
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/instcon.h
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/instset.c
+	<stdio.h>
+	"instset.h"
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/listadin.c
+	"listadin.h"
+	<stdio.h>
+	<stdlib.h>
+
+1439498425 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/main.c
+	<stdio.h>
+	<stdlib.h>
+	"instset.h"
+	"algcode.h"
+	"device.h"
+	"pilha.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"atributos.h"
+	"iec.tab.c"
+	"ecc.h"
+	"symbols.h"
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/pilha.h
+
+1438101705 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/atributos.h
+	"listadin.h"
+
+1465499396 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/iec.tab.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"atributos.h"
+	"instset.h"
+	"algcode.h"
+	"symbols.h"
+	"ecc.h"
+	"listadin.h"
+	"errors.h"
+	"instcon.h"
+	"asmltab.h"
+	"lex.yy.c"
+	<stddef.h>
+	<libintl.h>
+	<alloca.h>
+	<malloc.h>
+	<stdlib.h>
+	<stdlib.h>
+	<stdio.h>
+
+1465499396 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/lex.yy.c
+	<stdio.h>
+	<string.h>
+	<errno.h>
+	<stdlib.h>
+	<inttypes.h>
+	<string.h>
+	<stdlib.h>
+	"atributos.h"
+	"iec.tab.h"
+	"errors.h"
+	<unistd.h>
+
+1465499396 /home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/iec.tab.h
+
+1439497743 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/ospath.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ospath.h"
+
+1438101705 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/stack.c
+	"stack.h"
+
+1440363972 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/symbols.c
+	"errors.h"
+	"symbols.h"
+	"algcode.h"
+	"atributos.h"
+	"ecc.h"
+	<string.h>
+	<stdio.h>
+	"device.h"
+	"ospath.h"
+
+1439062187 source:/home/leandro/Dropbox/workspacegeneric/icarufb-dut-code/stcompiler/vector.c
+	"vector.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+

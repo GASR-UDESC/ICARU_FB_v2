@@ -1,0 +1,3 @@
+;File Asm: _init_DV2_RS1_SUB_1
+	    0: CONST         10
+	    1: STORE          7

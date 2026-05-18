@@ -1,0 +1,32 @@
+Server started
+Waiting client... OK
+Waiting client... Waiting for more data...
+CMD: 50
+CMD: 0
+CMD: 0
+CMD: 50
+CMD: 0
+CMD: 6C
+RUN: <Request ID="1" Action="WRITE" > <Parameter Reference="BOUNDS" Value="[100,100,150,200]" /></Request>
+RESP: <Response ID="1"><Parameter Reference="BOUNDS"/></Response>
+
+
+ 
+Waiting for more data...
+Server started
+Waiting client... OK
+Waiting client... Waiting for more data...
+CMD: 50
+CMD: 0
+CMD: 0
+CMD: 50
+CMD: 0
+CMD: 6C
+RUN: <Request ID="1" Action="WRITE" > <Parameter Reference="BOUNDS" Value="[100,100,150,200]" /></Request>
+RESP: <Response ID="1"><Parameter Reference="BOUNDS"/></Response>
+
+
+ 
+Waiting for more data...
+Server started
+Waiting client...

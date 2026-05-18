@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="ieccomp3" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/ieccomp3" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="SWITCHER.st -o icaru_compiler_tests" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/ieccomp3" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<ExtraCommands>
+			<Add before="bison -d -v iec.y" />
+			<Add before="flex iec.l" />
+		</ExtraCommands>
+		<Unit filename="algcode.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="algcode.h" />
+		<Unit filename="asmltab.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="asmltab.h" />
+		<Unit filename="atributos.h" />
+		<Unit filename="device.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="device.h" />
+		<Unit filename="ecc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ecc.h" />
+		<Unit filename="errors.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="errors.h" />
+		<Unit filename="instcon.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="instcon.h" />
+		<Unit filename="instset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="instset.h" />
+		<Unit filename="listadin.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="listadin.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ospath.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ospath.h" />
+		<Unit filename="stack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="stack.h" />
+		<Unit filename="symbols.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="symbols.h" />
+		<Unit filename="vector.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="vector.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,3434 @@
+Terminais não utilizados na gramática
+
+   T_HASH
+   T_XOR
+   T_AT
+   T_TASK
+   T_ON
+   T_WITH
+   T_BI_ADD
+   T_BI_MUL
+   T_BI_SUB
+   T_BI_DIV
+   T_BI_MOD
+   T_BI_GT
+   T_BI_GE
+   T_BI_EQ
+   T_BI_LT
+   T_BI_LE
+   T_BI_NE
+
+
+Gramática
+
+    0 $accept: StFile $end
+
+    1 StFile: Blocks System
+    2       | Blocks
+    3       | System
+
+    4 Blocks: Blocks FunctionBlock
+    5       | FunctionBlock
+    6       | CustomFunctionBlock
+
+    7 $@1: %empty
+
+    8 $@2: %empty
+
+    9 $@3: %empty
+
+   10 $@4: %empty
+
+   11 $@5: %empty
+
+   12 $@6: %empty
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+   14 $@7: %empty
+
+   15 $@8: %empty
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 EventInputListContainer EventOutputListContainer EcStatesListContainer EcTransListContainer VarInputListContainer VarOutputListContainer VarListContainer $@8 FbContinue T_END_FUNCTION_BLOCK
+
+   17 FbContinue: AlgorithmList
+   18           | FbsListContainer EventConnListContainer DataConnListContainer
+
+   19 EventInputListContainer: %empty
+   20                        | T_EVENT_INPUT EventList T_END_EVENT
+
+   21 EventOutputListContainer: %empty
+   22                         | T_EVENT_OUTPUT EventList T_END_EVENT
+
+   23 EventList: %empty
+   24          | EventList Event T_SEMICOLON
+
+   25 Event: T_ID
+
+   26 EcStatesListContainer: T_EC_STATES EcStatesList T_END_STATES
+
+   27 EcStatesList: EcStatesList EcStates
+   28             | EcStates
+
+   29 $@9: %empty
+
+   30 EcStates: T_ID $@9 EcActionsList T_SEMICOLON
+
+   31 EcActionsList: %empty
+   32              | T_TWO_POINTS EcActionsListComa
+
+   33 EcActionsListComa: EcActionsListComa T_COMA EcAction
+   34                  | EcAction
+   35                  | %empty
+
+   36 EcAction: T_ID T_ARROW T_ID
+   37         | T_ARROW T_ID
+   38         | T_ID T_ARROW
+
+   39 $@10: %empty
+
+   40 $@11: %empty
+
+   41 EcTransListContainer: T_EC_TRANSITIONS $@10 EcTransList $@11 T_END_TRANSITIONS
+
+   42 EcTransList: %empty
+   43            | EcTransList EcTrans
+
+   44 $@12: %empty
+
+   45 EcTrans: T_ID T_TO T_ID T_ASSIGNMENT Expr $@12 T_SEMICOLON
+
+   46 VarInputListContainer: %empty
+   47                      | T_VAR_INPUT VarList T_END_VAR
+
+   48 VarOutputListContainer: %empty
+   49                       | T_VAR_OUTPUT VarList T_END_VAR
+
+   50 VarListContainer: %empty
+   51                 | T_VAR VarList T_END_VAR
+
+   52 VarList: %empty
+   53        | VarList VarDecl
+
+   54 VarDecl: T_ID T_TWO_POINTS T_ID VarDeclAssig T_SEMICOLON
+
+   55 VarDeclAssig: %empty
+   56             | T_ASSIGNMENT T_NUMBER
+
+   57 System: T_SYSTEM T_ID DeviceList T_END_SYSTEM
+
+   58 DeviceList: Device DeviceList
+   59           | Device
+
+   60 $@13: %empty
+
+   61 Device: T_DEVICE T_ID T_TWO_POINTS T_ID $@13 ResourceList T_END_DEVICE
+
+   62 $@14: %empty
+
+   63 Device: T_DEVICE T_ID T_TWO_POINTS T_ID T_OP T_CP $@14 ResourceList T_END_DEVICE
+
+   64 ResourceList: ResourceList Resource
+   65             | Resource
+
+   66 $@15: %empty
+
+   67 Resource: T_RESOURCE T_ID T_TWO_POINTS T_ID T_OP T_CP $@15 FbsListContainer EventConnListContainer DataConnListContainer T_END_RESOURCE
+
+   68 FbsListContainer: T_FBS FbsList T_END_FBS
+
+   69 FbsList: FbsList FbsDeclaration
+   70        | FbsDeclaration
+
+   71 FbsDeclaration: T_ID T_TWO_POINTS T_ID T_SEMICOLON
+
+   72 $@16: %empty
+
+   73 FbsDeclaration: T_ID T_TWO_POINTS T_ID T_OP $@16 ConstAssigList T_CP T_SEMICOLON
+
+   74 ConstAssigList: ConstAssigList ConstAssig
+   75               | ConstAssig
+
+   76 ConstAssig: T_ID T_ASSIGNMENT T_NUMBER T_SEMICOLON
+
+   77 $@17: %empty
+
+   78 EventConnListContainer: T_EVENT_CONNECTIONS $@17 ConnectionList T_END_CONNECTIONS
+
+   79 $@18: %empty
+
+   80 DataConnListContainer: T_DATA_CONNECTIONS $@18 ConnectionList T_END_CONNECTIONS
+
+   81 ConnectionList: ConnectionList Connection
+   82               | Connection
+
+   83 Connection: T_ID T_POINT T_ID T_TO T_ID T_POINT T_ID T_SEMICOLON
+
+   84 AlgorithmList: %empty
+   85              | AlgorithmList Algorithm
+
+   86 $@19: %empty
+
+   87 Algorithm: T_ALGORITHM T_ID T_IN T_ID T_TWO_POINTS $@19 StatementList T_END_ALGORITHM
+
+   88 StatementList: %empty
+   89              | StatementList Assignment
+   90              | StatementList If_stat
+   91              | StatementList While_stat
+   92              | StatementList Call_stat T_SEMICOLON
+   93              | StatementList AsmBlock
+
+   94 AsmBlock: T_ASM AsmCode T_END_ASM
+
+   95 AsmCode: %empty
+   96        | AsmCode Instruction
+
+   97 Instruction: T_LOAD AsmIdNum
+   98            | T_CONST T_NUMBER
+   99            | T_STORE AsmIdNum
+  100            | AsmIf T_GOTO AsmIdNumGoto
+  101            | T_NISND
+  102            | T_OR
+  103            | T_NIRCV
+  104            | T_GOTO AsmIdNumGoto
+  105            | T_ID T_TWO_POINTS
+
+  106 AsmIf: T_IF
+  107      | T_IFEQ
+
+  108 AsmIdNumGoto: T_ID
+  109             | T_NUMBER
+  110             | T_ADD T_NUMBER
+
+  111 AsmIdNum: T_ID
+  112         | T_NUMBER
+  113         | T_ADD T_NUMBER
+
+  114 Call_stat: T_BI_SET_REG T_OP Expr T_COMA Expr T_CP
+  115          | T_BI_GET_REG T_OP Expr T_CP
+  116          | T_BI_GET_REG_REAL T_OP Expr T_CP
+
+  117 While_stat: T_WHILE Expr T_DO StatementList T_END_WHILE T_SEMICOLON
+
+  118 $@20: %empty
+
+  119 If_stat: T_IF Expr T_THEN $@20 StatementList IFContinue
+
+  120 IFContinue: T_END_IF T_SEMICOLON
+
+  121 $@21: %empty
+
+  122 IFContinue: T_ELSE $@21 StatementList T_END_IF T_SEMICOLON
+
+  123 $@22: %empty
+
+  124 $@23: %empty
+
+  125 IFContinue: T_ELSIF $@22 Expr T_THEN $@23 StatementList IFContinue
+
+  126 Assignment: T_ID T_ASSIGNMENT Expr T_SEMICOLON
+
+  127 M: %empty
+
+  128 Expr: Logical_Expr
+
+  129 Logical_Expr: Logical_Expr T_OR M Logical_Expr_p2
+  130             | Logical_Expr_p2
+
+  131 Logical_Expr_p2: Logical_Expr_p2 T_AND M Logical_Expr_p1
+  132                | Logical_Expr_p1
+
+  133 Logical_Expr_p1: %empty
+  134                | Relational_Expr
+
+  135 Relational_Expr: Relational_Expr Relational_Operator Arithmetic_Expr
+  136                | Arithmetic_Expr
+
+  137 Arithmetic_Expr: Arithmetic_Expr T_ADD Arithmetic_Expr_p1
+  138                | Arithmetic_Expr T_SUB Arithmetic_Expr_p1
+  139                | Arithmetic_Expr_p1
+
+  140 Arithmetic_Expr_p1: Arithmetic_Expr_p1 T_MUL Factor
+  141                   | Arithmetic_Expr_p1 T_DIV Factor
+  142                   | Factor
+
+  143 Factor: T_NUMBER
+  144       | T_NUMBER_REAL
+  145       | T_OP Expr T_CP
+  146       | T_NOT Factor
+  147       | T_ID
+  148       | Call_stat
+
+  149 Relational_Operator: T_GT
+  150                    | T_GE
+  151                    | T_LT
+  152                    | T_LE
+  153                    | T_EQ
+
+
+Terminais, com as regras onde eles aparecem
+
+$end (0) 0
+error (256)
+T_FUNCTION_BLOCK (258) 13 16
+T_END_FUNCTION_BLOCK (259) 13 16
+T_SYSTEM (260) 57
+T_END_SYSTEM (261) 57
+T_DEVICE (262) 61 63
+T_END_DEVICE (263) 61 63
+T_CUSTOM (264) 13
+T_ALGORITHM (265) 13 87
+T_END_ALGORITHM (266) 13 87
+T_IN (267) 87
+T_END_FBS (268) 68
+T_FBS (269) 68
+T_EVENT_CONNECTIONS (270) 78
+T_DATA_CONNECTIONS (271) 80
+T_END_CONNECTIONS (272) 78 80
+T_EVENT_INPUT (273) 20
+T_EVENT_OUTPUT (274) 22
+T_END_EVENT (275) 20 22
+T_EC_STATES (276) 26
+T_END_STATES (277) 26
+T_EC_TRANSITIONS (278) 41
+T_END_TRANSITIONS (279) 41
+T_VAR (280) 51
+T_VAR_INPUT (281) 47
+T_VAR_OUTPUT (282) 49
+T_END_VAR (283) 47 49 51
+T_TWO_POINTS (284) 13 32 54 61 63 67 71 73 87 105
+T_SEMICOLON (285) 24 30 45 54 71 73 76 83 92 117 120 122 126
+T_ASSIGNMENT (286) 45 56 76 126
+T_OP (287) 63 67 73 114 115 116 145
+T_CP (288) 63 67 73 114 115 116 145
+T_COMA (289) 33 114
+T_POINT (290) 83
+T_HASH (291)
+T_ARROW (292) 36 37 38
+T_OR (293) 102 129
+T_AND (294) 131
+T_NOT (295) 146
+T_XOR (296)
+T_GT (297) 149
+T_LT (298) 151
+T_EQ (299) 153
+T_GE (300) 150
+T_LE (301) 152
+T_ADD (302) 110 113 137
+T_SUB (303) 138
+T_DIV (304) 141
+T_MUL (305) 140
+T_ID (306) 13 16 25 30 36 37 38 45 54 57 61 63 67 71 73 76 83 87 105
+    108 111 126 147
+T_NUMBER (307) 56 76 98 109 110 112 113 143
+T_NUMBER_REAL (308) 144
+T_AT (309)
+T_TO (310) 45 83
+T_RESOURCE (311) 67
+T_END_RESOURCE (312) 67
+T_TASK (313)
+T_ON (314)
+T_WITH (315)
+T_IF (316) 106 119
+T_THEN (317) 119 125
+T_END_IF (318) 120 122
+T_ELSE (319) 122
+T_ELSIF (320) 125
+T_WHILE (321) 117
+T_DO (322) 117
+T_END_WHILE (323) 117
+T_BI_ADD (324)
+T_BI_MUL (325)
+T_BI_SUB (326)
+T_BI_DIV (327)
+T_BI_MOD (328)
+T_BI_GT (329)
+T_BI_GE (330)
+T_BI_EQ (331)
+T_BI_LT (332)
+T_BI_LE (333)
+T_BI_NE (334)
+T_BI_SET_REG (335) 114
+T_BI_GET_REG (336) 115
+T_BI_GET_REG_REAL (337) 116
+T_ASM (338) 94
+T_END_ASM (339) 94
+T_NISND (340) 101
+T_NIRCV (341) 103
+T_STORE (342) 99
+T_LOAD (343) 97
+T_GOTO (344) 100 104
+T_CONST (345) 98
+T_IFEQ (346) 107
+
+
+Não-terminais com as regras onde eles aparecem
+
+$accept (92)
+    à esquerda: 0
+StFile (93)
+    à esquerda: 1 2 3, à direita: 0
+Blocks (94)
+    à esquerda: 4 5 6, à direita: 1 2 4
+CustomFunctionBlock (95)
+    à esquerda: 13, à direita: 6
+$@1 (96)
+    à esquerda: 7, à direita: 13
+$@2 (97)
+    à esquerda: 8, à direita: 13
+$@3 (98)
+    à esquerda: 9, à direita: 13
+$@4 (99)
+    à esquerda: 10, à direita: 13
+$@5 (100)
+    à esquerda: 11, à direita: 13
+$@6 (101)
+    à esquerda: 12, à direita: 13
+FunctionBlock (102)
+    à esquerda: 16, à direita: 4 5
+$@7 (103)
+    à esquerda: 14, à direita: 16
+$@8 (104)
+    à esquerda: 15, à direita: 16
+FbContinue (105)
+    à esquerda: 17 18, à direita: 16
+EventInputListContainer (106)
+    à esquerda: 19 20, à direita: 13 16
+EventOutputListContainer (107)
+    à esquerda: 21 22, à direita: 13 16
+EventList (108)
+    à esquerda: 23 24, à direita: 20 22 24
+Event (109)
+    à esquerda: 25, à direita: 24
+EcStatesListContainer (110)
+    à esquerda: 26, à direita: 16
+EcStatesList (111)
+    à esquerda: 27 28, à direita: 26 27
+EcStates (112)
+    à esquerda: 30, à direita: 27 28
+$@9 (113)
+    à esquerda: 29, à direita: 30
+EcActionsList (114)
+    à esquerda: 31 32, à direita: 30
+EcActionsListComa (115)
+    à esquerda: 33 34 35, à direita: 32 33
+EcAction (116)
+    à esquerda: 36 37 38, à direita: 33 34
+EcTransListContainer (117)
+    à esquerda: 41, à direita: 16
+$@10 (118)
+    à esquerda: 39, à direita: 41
+$@11 (119)
+    à esquerda: 40, à direita: 41
+EcTransList (120)
+    à esquerda: 42 43, à direita: 41 43
+EcTrans (121)
+    à esquerda: 45, à direita: 43
+$@12 (122)
+    à esquerda: 44, à direita: 45
+VarInputListContainer (123)
+    à esquerda: 46 47, à direita: 13 16
+VarOutputListContainer (124)
+    à esquerda: 48 49, à direita: 13 16
+VarListContainer (125)
+    à esquerda: 50 51, à direita: 13 16
+VarList (126)
+    à esquerda: 52 53, à direita: 47 49 51 53
+VarDecl (127)
+    à esquerda: 54, à direita: 53
+VarDeclAssig (128)
+    à esquerda: 55 56, à direita: 54
+System (129)
+    à esquerda: 57, à direita: 1 3
+DeviceList (130)
+    à esquerda: 58 59, à direita: 57 58
+Device (131)
+    à esquerda: 61 63, à direita: 58 59
+$@13 (132)
+    à esquerda: 60, à direita: 61
+$@14 (133)
+    à esquerda: 62, à direita: 63
+ResourceList (134)
+    à esquerda: 64 65, à direita: 61 63 64
+Resource (135)
+    à esquerda: 67, à direita: 64 65
+$@15 (136)
+    à esquerda: 66, à direita: 67
+FbsListContainer (137)
+    à esquerda: 68, à direita: 18 67
+FbsList (138)
+    à esquerda: 69 70, à direita: 68 69
+FbsDeclaration (139)
+    à esquerda: 71 73, à direita: 69 70
+$@16 (140)
+    à esquerda: 72, à direita: 73
+ConstAssigList (141)
+    à esquerda: 74 75, à direita: 73 74
+ConstAssig (142)
+    à esquerda: 76, à direita: 74 75
+EventConnListContainer (143)
+    à esquerda: 78, à direita: 18 67
+$@17 (144)
+    à esquerda: 77, à direita: 78
+DataConnListContainer (145)
+    à esquerda: 80, à direita: 18 67
+$@18 (146)
+    à esquerda: 79, à direita: 80
+ConnectionList (147)
+    à esquerda: 81 82, à direita: 78 80 81
+Connection (148)
+    à esquerda: 83, à direita: 81 82
+AlgorithmList (149)
+    à esquerda: 84 85, à direita: 17 85
+Algorithm (150)
+    à esquerda: 87, à direita: 85
+$@19 (151)
+    à esquerda: 86, à direita: 87
+StatementList (152)
+    à esquerda: 88 89 90 91 92 93, à direita: 13 87 89 90 91 92 93
+    117 119 122 125
+AsmBlock (153)
+    à esquerda: 94, à direita: 93
+AsmCode (154)
+    à esquerda: 95 96, à direita: 94 96
+Instruction (155)
+    à esquerda: 97 98 99 100 101 102 103 104 105, à direita: 96
+AsmIf (156)
+    à esquerda: 106 107, à direita: 100
+AsmIdNumGoto (157)
+    à esquerda: 108 109 110, à direita: 100 104
+AsmIdNum (158)
+    à esquerda: 111 112 113, à direita: 97 99
+Call_stat (159)
+    à esquerda: 114 115 116, à direita: 92 148
+While_stat (160)
+    à esquerda: 117, à direita: 91
+If_stat (161)
+    à esquerda: 119, à direita: 90
+$@20 (162)
+    à esquerda: 118, à direita: 119
+IFContinue (163)
+    à esquerda: 120 122 125, à direita: 119 125
+$@21 (164)
+    à esquerda: 121, à direita: 122
+$@22 (165)
+    à esquerda: 123, à direita: 125
+$@23 (166)
+    à esquerda: 124, à direita: 125
+Assignment (167)
+    à esquerda: 126, à direita: 89
+M (168)
+    à esquerda: 127, à direita: 129 131
+Expr (169)
+    à esquerda: 128, à direita: 45 114 115 116 117 119 125 126 145
+Logical_Expr (170)
+    à esquerda: 129 130, à direita: 128 129
+Logical_Expr_p2 (171)
+    à esquerda: 131 132, à direita: 129 130 131
+Logical_Expr_p1 (172)
+    à esquerda: 133 134, à direita: 131 132
+Relational_Expr (173)
+    à esquerda: 135 136, à direita: 134 135
+Arithmetic_Expr (174)
+    à esquerda: 137 138 139, à direita: 135 136 137 138
+Arithmetic_Expr_p1 (175)
+    à esquerda: 140 141 142, à direita: 137 138 139 140 141
+Factor (176)
+    à esquerda: 143 144 145 146 147 148, à direita: 140 141 142 146
+Relational_Operator (177)
+    à esquerda: 149 150 151 152 153, à direita: 135
+
+
+State 0
+
+    0 $accept: . StFile $end
+
+    T_FUNCTION_BLOCK  deslocar, e ir ao estado 1
+    T_SYSTEM          deslocar, e ir ao estado 2
+    T_CUSTOM          deslocar, e ir ao estado 3
+
+    StFile               ir ao estado 4
+    Blocks               ir ao estado 5
+    CustomFunctionBlock  ir ao estado 6
+    FunctionBlock        ir ao estado 7
+    System               ir ao estado 8
+
+
+State 1
+
+   16 FunctionBlock: T_FUNCTION_BLOCK . T_ID $@7 EventInputListContainer EventOutputListContainer EcStatesListContainer EcTransListContainer VarInputListContainer VarOutputListContainer VarListContainer $@8 FbContinue T_END_FUNCTION_BLOCK
+
+    T_ID  deslocar, e ir ao estado 9
+
+
+State 2
+
+   57 System: T_SYSTEM . T_ID DeviceList T_END_SYSTEM
+
+    T_ID  deslocar, e ir ao estado 10
+
+
+State 3
+
+   13 CustomFunctionBlock: T_CUSTOM . T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_FUNCTION_BLOCK  deslocar, e ir ao estado 11
+
+
+State 4
+
+    0 $accept: StFile . $end
+
+    $end  deslocar, e ir ao estado 12
+
+
+State 5
+
+    1 StFile: Blocks . System
+    2       | Blocks .
+    4 Blocks: Blocks . FunctionBlock
+
+    T_FUNCTION_BLOCK  deslocar, e ir ao estado 1
+    T_SYSTEM          deslocar, e ir ao estado 2
+
+    $padrão  reduzir usando a regra 2 (StFile)
+
+    FunctionBlock  ir ao estado 13
+    System         ir ao estado 14
+
+
+State 6
+
+    6 Blocks: CustomFunctionBlock .
+
+    $padrão  reduzir usando a regra 6 (Blocks)
+
+
+State 7
+
+    5 Blocks: FunctionBlock .
+
+    $padrão  reduzir usando a regra 5 (Blocks)
+
+
+State 8
+
+    3 StFile: System .
+
+    $padrão  reduzir usando a regra 3 (StFile)
+
+
+State 9
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID . $@7 EventInputListContainer EventOutputListContainer EcStatesListContainer EcTransListContainer VarInputListContainer VarOutputListContainer VarListContainer $@8 FbContinue T_END_FUNCTION_BLOCK
+
+    $padrão  reduzir usando a regra 14 ($@7)
+
+    $@7  ir ao estado 15
+
+
+State 10
+
+   57 System: T_SYSTEM T_ID . DeviceList T_END_SYSTEM
+
+    T_DEVICE  deslocar, e ir ao estado 16
+
+    DeviceList  ir ao estado 17
+    Device      ir ao estado 18
+
+
+State 11
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK . T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_ID  deslocar, e ir ao estado 19
+
+
+State 12
+
+    0 $accept: StFile $end .
+
+    $padrão  aceitar
+
+
+State 13
+
+    4 Blocks: Blocks FunctionBlock .
+
+    $padrão  reduzir usando a regra 4 (Blocks)
+
+
+State 14
+
+    1 StFile: Blocks System .
+
+    $padrão  reduzir usando a regra 1 (StFile)
+
+
+State 15
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 . EventInputListContainer EventOutputListContainer EcStatesListContainer EcTransListContainer VarInputListContainer VarOutputListContainer VarListContainer $@8 FbContinue T_END_FUNCTION_BLOCK
+
+    T_EVENT_INPUT  deslocar, e ir ao estado 20
+
+    $padrão  reduzir usando a regra 19 (EventInputListContainer)
+
+    EventInputListContainer  ir ao estado 21
+
+
+State 16
+
+   61 Device: T_DEVICE . T_ID T_TWO_POINTS T_ID $@13 ResourceList T_END_DEVICE
+   63       | T_DEVICE . T_ID T_TWO_POINTS T_ID T_OP T_CP $@14 ResourceList T_END_DEVICE
+
+    T_ID  deslocar, e ir ao estado 22
+
+
+State 17
+
+   57 System: T_SYSTEM T_ID DeviceList . T_END_SYSTEM
+
+    T_END_SYSTEM  deslocar, e ir ao estado 23
+
+
+State 18
+
+   58 DeviceList: Device . DeviceList
+   59           | Device .
+
+    T_DEVICE  deslocar, e ir ao estado 16
+
+    $padrão  reduzir usando a regra 59 (DeviceList)
+
+    DeviceList  ir ao estado 24
+    Device      ir ao estado 18
+
+
+State 19
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID . $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    $padrão  reduzir usando a regra 7 ($@1)
+
+    $@1  ir ao estado 25
+
+
+State 20
+
+   20 EventInputListContainer: T_EVENT_INPUT . EventList T_END_EVENT
+
+    $padrão  reduzir usando a regra 23 (EventList)
+
+    EventList  ir ao estado 26
+
+
+State 21
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 EventInputListContainer . EventOutputListContainer EcStatesListContainer EcTransListContainer VarInputListContainer VarOutputListContainer VarListContainer $@8 FbContinue T_END_FUNCTION_BLOCK
+
+    T_EVENT_OUTPUT  deslocar, e ir ao estado 27
+
+    $padrão  reduzir usando a regra 21 (EventOutputListContainer)
+
+    EventOutputListContainer  ir ao estado 28
+
+
+State 22
+
+   61 Device: T_DEVICE T_ID . T_TWO_POINTS T_ID $@13 ResourceList T_END_DEVICE
+   63       | T_DEVICE T_ID . T_TWO_POINTS T_ID T_OP T_CP $@14 ResourceList T_END_DEVICE
+
+    T_TWO_POINTS  deslocar, e ir ao estado 29
+
+
+State 23
+
+   57 System: T_SYSTEM T_ID DeviceList T_END_SYSTEM .
+
+    $padrão  reduzir usando a regra 57 (System)
+
+
+State 24
+
+   58 DeviceList: Device DeviceList .
+
+    $padrão  reduzir usando a regra 58 (DeviceList)
+
+
+State 25
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 . EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_EVENT_INPUT  deslocar, e ir ao estado 20
+
+    $padrão  reduzir usando a regra 19 (EventInputListContainer)
+
+    EventInputListContainer  ir ao estado 30
+
+
+State 26
+
+   20 EventInputListContainer: T_EVENT_INPUT EventList . T_END_EVENT
+   24 EventList: EventList . Event T_SEMICOLON
+
+    T_END_EVENT  deslocar, e ir ao estado 31
+    T_ID         deslocar, e ir ao estado 32
+
+    Event  ir ao estado 33
+
+
+State 27
+
+   22 EventOutputListContainer: T_EVENT_OUTPUT . EventList T_END_EVENT
+
+    $padrão  reduzir usando a regra 23 (EventList)
+
+    EventList  ir ao estado 34
+
+
+State 28
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 EventInputListContainer EventOutputListContainer . EcStatesListContainer EcTransListContainer VarInputListContainer VarOutputListContainer VarListContainer $@8 FbContinue T_END_FUNCTION_BLOCK
+
+    T_EC_STATES  deslocar, e ir ao estado 35
+
+    EcStatesListContainer  ir ao estado 36
+
+
+State 29
+
+   61 Device: T_DEVICE T_ID T_TWO_POINTS . T_ID $@13 ResourceList T_END_DEVICE
+   63       | T_DEVICE T_ID T_TWO_POINTS . T_ID T_OP T_CP $@14 ResourceList T_END_DEVICE
+
+    T_ID  deslocar, e ir ao estado 37
+
+
+State 30
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer . EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_EVENT_OUTPUT  deslocar, e ir ao estado 27
+
+    $padrão  reduzir usando a regra 21 (EventOutputListContainer)
+
+    EventOutputListContainer  ir ao estado 38
+
+
+State 31
+
+   20 EventInputListContainer: T_EVENT_INPUT EventList T_END_EVENT .
+
+    $padrão  reduzir usando a regra 20 (EventInputListContainer)
+
+
+State 32
+
+   25 Event: T_ID .
+
+    $padrão  reduzir usando a regra 25 (Event)
+
+
+State 33
+
+   24 EventList: EventList Event . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 39
+
+
+State 34
+
+   22 EventOutputListContainer: T_EVENT_OUTPUT EventList . T_END_EVENT
+   24 EventList: EventList . Event T_SEMICOLON
+
+    T_END_EVENT  deslocar, e ir ao estado 40
+    T_ID         deslocar, e ir ao estado 32
+
+    Event  ir ao estado 33
+
+
+State 35
+
+   26 EcStatesListContainer: T_EC_STATES . EcStatesList T_END_STATES
+
+    T_ID  deslocar, e ir ao estado 41
+
+    EcStatesList  ir ao estado 42
+    EcStates      ir ao estado 43
+
+
+State 36
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 EventInputListContainer EventOutputListContainer EcStatesListContainer . EcTransListContainer VarInputListContainer VarOutputListContainer VarListContainer $@8 FbContinue T_END_FUNCTION_BLOCK
+
+    T_EC_TRANSITIONS  deslocar, e ir ao estado 44
+
+    EcTransListContainer  ir ao estado 45
+
+
+State 37
+
+   61 Device: T_DEVICE T_ID T_TWO_POINTS T_ID . $@13 ResourceList T_END_DEVICE
+   63       | T_DEVICE T_ID T_TWO_POINTS T_ID . T_OP T_CP $@14 ResourceList T_END_DEVICE
+
+    T_OP  deslocar, e ir ao estado 46
+
+    $padrão  reduzir usando a regra 60 ($@13)
+
+    $@13  ir ao estado 47
+
+
+State 38
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer . VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_VAR_INPUT  deslocar, e ir ao estado 48
+
+    $padrão  reduzir usando a regra 46 (VarInputListContainer)
+
+    VarInputListContainer  ir ao estado 49
+
+
+State 39
+
+   24 EventList: EventList Event T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 24 (EventList)
+
+
+State 40
+
+   22 EventOutputListContainer: T_EVENT_OUTPUT EventList T_END_EVENT .
+
+    $padrão  reduzir usando a regra 22 (EventOutputListContainer)
+
+
+State 41
+
+   30 EcStates: T_ID . $@9 EcActionsList T_SEMICOLON
+
+    $padrão  reduzir usando a regra 29 ($@9)
+
+    $@9  ir ao estado 50
+
+
+State 42
+
+   26 EcStatesListContainer: T_EC_STATES EcStatesList . T_END_STATES
+   27 EcStatesList: EcStatesList . EcStates
+
+    T_END_STATES  deslocar, e ir ao estado 51
+    T_ID          deslocar, e ir ao estado 41
+
+    EcStates  ir ao estado 52
+
+
+State 43
+
+   28 EcStatesList: EcStates .
+
+    $padrão  reduzir usando a regra 28 (EcStatesList)
+
+
+State 44
+
+   41 EcTransListContainer: T_EC_TRANSITIONS . $@10 EcTransList $@11 T_END_TRANSITIONS
+
+    $padrão  reduzir usando a regra 39 ($@10)
+
+    $@10  ir ao estado 53
+
+
+State 45
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 EventInputListContainer EventOutputListContainer EcStatesListContainer EcTransListContainer . VarInputListContainer VarOutputListContainer VarListContainer $@8 FbContinue T_END_FUNCTION_BLOCK
+
+    T_VAR_INPUT  deslocar, e ir ao estado 48
+
+    $padrão  reduzir usando a regra 46 (VarInputListContainer)
+
+    VarInputListContainer  ir ao estado 54
+
+
+State 46
+
+   63 Device: T_DEVICE T_ID T_TWO_POINTS T_ID T_OP . T_CP $@14 ResourceList T_END_DEVICE
+
+    T_CP  deslocar, e ir ao estado 55
+
+
+State 47
+
+   61 Device: T_DEVICE T_ID T_TWO_POINTS T_ID $@13 . ResourceList T_END_DEVICE
+
+    T_RESOURCE  deslocar, e ir ao estado 56
+
+    ResourceList  ir ao estado 57
+    Resource      ir ao estado 58
+
+
+State 48
+
+   47 VarInputListContainer: T_VAR_INPUT . VarList T_END_VAR
+
+    $padrão  reduzir usando a regra 52 (VarList)
+
+    VarList  ir ao estado 59
+
+
+State 49
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer . VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_VAR_OUTPUT  deslocar, e ir ao estado 60
+
+    $padrão  reduzir usando a regra 48 (VarOutputListContainer)
+
+    VarOutputListContainer  ir ao estado 61
+
+
+State 50
+
+   30 EcStates: T_ID $@9 . EcActionsList T_SEMICOLON
+
+    T_TWO_POINTS  deslocar, e ir ao estado 62
+
+    $padrão  reduzir usando a regra 31 (EcActionsList)
+
+    EcActionsList  ir ao estado 63
+
+
+State 51
+
+   26 EcStatesListContainer: T_EC_STATES EcStatesList T_END_STATES .
+
+    $padrão  reduzir usando a regra 26 (EcStatesListContainer)
+
+
+State 52
+
+   27 EcStatesList: EcStatesList EcStates .
+
+    $padrão  reduzir usando a regra 27 (EcStatesList)
+
+
+State 53
+
+   41 EcTransListContainer: T_EC_TRANSITIONS $@10 . EcTransList $@11 T_END_TRANSITIONS
+
+    $padrão  reduzir usando a regra 42 (EcTransList)
+
+    EcTransList  ir ao estado 64
+
+
+State 54
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 EventInputListContainer EventOutputListContainer EcStatesListContainer EcTransListContainer VarInputListContainer . VarOutputListContainer VarListContainer $@8 FbContinue T_END_FUNCTION_BLOCK
+
+    T_VAR_OUTPUT  deslocar, e ir ao estado 60
+
+    $padrão  reduzir usando a regra 48 (VarOutputListContainer)
+
+    VarOutputListContainer  ir ao estado 65
+
+
+State 55
+
+   63 Device: T_DEVICE T_ID T_TWO_POINTS T_ID T_OP T_CP . $@14 ResourceList T_END_DEVICE
+
+    $padrão  reduzir usando a regra 62 ($@14)
+
+    $@14  ir ao estado 66
+
+
+State 56
+
+   67 Resource: T_RESOURCE . T_ID T_TWO_POINTS T_ID T_OP T_CP $@15 FbsListContainer EventConnListContainer DataConnListContainer T_END_RESOURCE
+
+    T_ID  deslocar, e ir ao estado 67
+
+
+State 57
+
+   61 Device: T_DEVICE T_ID T_TWO_POINTS T_ID $@13 ResourceList . T_END_DEVICE
+   64 ResourceList: ResourceList . Resource
+
+    T_END_DEVICE  deslocar, e ir ao estado 68
+    T_RESOURCE    deslocar, e ir ao estado 56
+
+    Resource  ir ao estado 69
+
+
+State 58
+
+   65 ResourceList: Resource .
+
+    $padrão  reduzir usando a regra 65 (ResourceList)
+
+
+State 59
+
+   47 VarInputListContainer: T_VAR_INPUT VarList . T_END_VAR
+   53 VarList: VarList . VarDecl
+
+    T_END_VAR  deslocar, e ir ao estado 70
+    T_ID       deslocar, e ir ao estado 71
+
+    VarDecl  ir ao estado 72
+
+
+State 60
+
+   49 VarOutputListContainer: T_VAR_OUTPUT . VarList T_END_VAR
+
+    $padrão  reduzir usando a regra 52 (VarList)
+
+    VarList  ir ao estado 73
+
+
+State 61
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer . VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_VAR  deslocar, e ir ao estado 74
+
+    $padrão  reduzir usando a regra 50 (VarListContainer)
+
+    VarListContainer  ir ao estado 75
+
+
+State 62
+
+   32 EcActionsList: T_TWO_POINTS . EcActionsListComa
+
+    T_ARROW  deslocar, e ir ao estado 76
+    T_ID     deslocar, e ir ao estado 77
+
+    $padrão  reduzir usando a regra 35 (EcActionsListComa)
+
+    EcActionsListComa  ir ao estado 78
+    EcAction           ir ao estado 79
+
+
+State 63
+
+   30 EcStates: T_ID $@9 EcActionsList . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 80
+
+
+State 64
+
+   41 EcTransListContainer: T_EC_TRANSITIONS $@10 EcTransList . $@11 T_END_TRANSITIONS
+   43 EcTransList: EcTransList . EcTrans
+
+    T_ID  deslocar, e ir ao estado 81
+
+    $padrão  reduzir usando a regra 40 ($@11)
+
+    $@11     ir ao estado 82
+    EcTrans  ir ao estado 83
+
+
+State 65
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 EventInputListContainer EventOutputListContainer EcStatesListContainer EcTransListContainer VarInputListContainer VarOutputListContainer . VarListContainer $@8 FbContinue T_END_FUNCTION_BLOCK
+
+    T_VAR  deslocar, e ir ao estado 74
+
+    $padrão  reduzir usando a regra 50 (VarListContainer)
+
+    VarListContainer  ir ao estado 84
+
+
+State 66
+
+   63 Device: T_DEVICE T_ID T_TWO_POINTS T_ID T_OP T_CP $@14 . ResourceList T_END_DEVICE
+
+    T_RESOURCE  deslocar, e ir ao estado 56
+
+    ResourceList  ir ao estado 85
+    Resource      ir ao estado 58
+
+
+State 67
+
+   67 Resource: T_RESOURCE T_ID . T_TWO_POINTS T_ID T_OP T_CP $@15 FbsListContainer EventConnListContainer DataConnListContainer T_END_RESOURCE
+
+    T_TWO_POINTS  deslocar, e ir ao estado 86
+
+
+State 68
+
+   61 Device: T_DEVICE T_ID T_TWO_POINTS T_ID $@13 ResourceList T_END_DEVICE .
+
+    $padrão  reduzir usando a regra 61 (Device)
+
+
+State 69
+
+   64 ResourceList: ResourceList Resource .
+
+    $padrão  reduzir usando a regra 64 (ResourceList)
+
+
+State 70
+
+   47 VarInputListContainer: T_VAR_INPUT VarList T_END_VAR .
+
+    $padrão  reduzir usando a regra 47 (VarInputListContainer)
+
+
+State 71
+
+   54 VarDecl: T_ID . T_TWO_POINTS T_ID VarDeclAssig T_SEMICOLON
+
+    T_TWO_POINTS  deslocar, e ir ao estado 87
+
+
+State 72
+
+   53 VarList: VarList VarDecl .
+
+    $padrão  reduzir usando a regra 53 (VarList)
+
+
+State 73
+
+   49 VarOutputListContainer: T_VAR_OUTPUT VarList . T_END_VAR
+   53 VarList: VarList . VarDecl
+
+    T_END_VAR  deslocar, e ir ao estado 88
+    T_ID       deslocar, e ir ao estado 71
+
+    VarDecl  ir ao estado 72
+
+
+State 74
+
+   51 VarListContainer: T_VAR . VarList T_END_VAR
+
+    $padrão  reduzir usando a regra 52 (VarList)
+
+    VarList  ir ao estado 89
+
+
+State 75
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer . $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    $padrão  reduzir usando a regra 8 ($@2)
+
+    $@2  ir ao estado 90
+
+
+State 76
+
+   37 EcAction: T_ARROW . T_ID
+
+    T_ID  deslocar, e ir ao estado 91
+
+
+State 77
+
+   36 EcAction: T_ID . T_ARROW T_ID
+   38         | T_ID . T_ARROW
+
+    T_ARROW  deslocar, e ir ao estado 92
+
+
+State 78
+
+   32 EcActionsList: T_TWO_POINTS EcActionsListComa .
+   33 EcActionsListComa: EcActionsListComa . T_COMA EcAction
+
+    T_COMA  deslocar, e ir ao estado 93
+
+    $padrão  reduzir usando a regra 32 (EcActionsList)
+
+
+State 79
+
+   34 EcActionsListComa: EcAction .
+
+    $padrão  reduzir usando a regra 34 (EcActionsListComa)
+
+
+State 80
+
+   30 EcStates: T_ID $@9 EcActionsList T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 30 (EcStates)
+
+
+State 81
+
+   45 EcTrans: T_ID . T_TO T_ID T_ASSIGNMENT Expr $@12 T_SEMICOLON
+
+    T_TO  deslocar, e ir ao estado 94
+
+
+State 82
+
+   41 EcTransListContainer: T_EC_TRANSITIONS $@10 EcTransList $@11 . T_END_TRANSITIONS
+
+    T_END_TRANSITIONS  deslocar, e ir ao estado 95
+
+
+State 83
+
+   43 EcTransList: EcTransList EcTrans .
+
+    $padrão  reduzir usando a regra 43 (EcTransList)
+
+
+State 84
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 EventInputListContainer EventOutputListContainer EcStatesListContainer EcTransListContainer VarInputListContainer VarOutputListContainer VarListContainer . $@8 FbContinue T_END_FUNCTION_BLOCK
+
+    $padrão  reduzir usando a regra 15 ($@8)
+
+    $@8  ir ao estado 96
+
+
+State 85
+
+   63 Device: T_DEVICE T_ID T_TWO_POINTS T_ID T_OP T_CP $@14 ResourceList . T_END_DEVICE
+   64 ResourceList: ResourceList . Resource
+
+    T_END_DEVICE  deslocar, e ir ao estado 97
+    T_RESOURCE    deslocar, e ir ao estado 56
+
+    Resource  ir ao estado 69
+
+
+State 86
+
+   67 Resource: T_RESOURCE T_ID T_TWO_POINTS . T_ID T_OP T_CP $@15 FbsListContainer EventConnListContainer DataConnListContainer T_END_RESOURCE
+
+    T_ID  deslocar, e ir ao estado 98
+
+
+State 87
+
+   54 VarDecl: T_ID T_TWO_POINTS . T_ID VarDeclAssig T_SEMICOLON
+
+    T_ID  deslocar, e ir ao estado 99
+
+
+State 88
+
+   49 VarOutputListContainer: T_VAR_OUTPUT VarList T_END_VAR .
+
+    $padrão  reduzir usando a regra 49 (VarOutputListContainer)
+
+
+State 89
+
+   51 VarListContainer: T_VAR VarList . T_END_VAR
+   53 VarList: VarList . VarDecl
+
+    T_END_VAR  deslocar, e ir ao estado 100
+    T_ID       deslocar, e ir ao estado 71
+
+    VarDecl  ir ao estado 72
+
+
+State 90
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 . T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_ALGORITHM  deslocar, e ir ao estado 101
+
+
+State 91
+
+   37 EcAction: T_ARROW T_ID .
+
+    $padrão  reduzir usando a regra 37 (EcAction)
+
+
+State 92
+
+   36 EcAction: T_ID T_ARROW . T_ID
+   38         | T_ID T_ARROW .
+
+    T_ID  deslocar, e ir ao estado 102
+
+    $padrão  reduzir usando a regra 38 (EcAction)
+
+
+State 93
+
+   33 EcActionsListComa: EcActionsListComa T_COMA . EcAction
+
+    T_ARROW  deslocar, e ir ao estado 76
+    T_ID     deslocar, e ir ao estado 77
+
+    EcAction  ir ao estado 103
+
+
+State 94
+
+   45 EcTrans: T_ID T_TO . T_ID T_ASSIGNMENT Expr $@12 T_SEMICOLON
+
+    T_ID  deslocar, e ir ao estado 104
+
+
+State 95
+
+   41 EcTransListContainer: T_EC_TRANSITIONS $@10 EcTransList $@11 T_END_TRANSITIONS .
+
+    $padrão  reduzir usando a regra 41 (EcTransListContainer)
+
+
+State 96
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 EventInputListContainer EventOutputListContainer EcStatesListContainer EcTransListContainer VarInputListContainer VarOutputListContainer VarListContainer $@8 . FbContinue T_END_FUNCTION_BLOCK
+
+    T_FBS  deslocar, e ir ao estado 105
+
+    $padrão  reduzir usando a regra 84 (AlgorithmList)
+
+    FbContinue        ir ao estado 106
+    FbsListContainer  ir ao estado 107
+    AlgorithmList     ir ao estado 108
+
+
+State 97
+
+   63 Device: T_DEVICE T_ID T_TWO_POINTS T_ID T_OP T_CP $@14 ResourceList T_END_DEVICE .
+
+    $padrão  reduzir usando a regra 63 (Device)
+
+
+State 98
+
+   67 Resource: T_RESOURCE T_ID T_TWO_POINTS T_ID . T_OP T_CP $@15 FbsListContainer EventConnListContainer DataConnListContainer T_END_RESOURCE
+
+    T_OP  deslocar, e ir ao estado 109
+
+
+State 99
+
+   54 VarDecl: T_ID T_TWO_POINTS T_ID . VarDeclAssig T_SEMICOLON
+
+    T_ASSIGNMENT  deslocar, e ir ao estado 110
+
+    $padrão  reduzir usando a regra 55 (VarDeclAssig)
+
+    VarDeclAssig  ir ao estado 111
+
+
+State 100
+
+   51 VarListContainer: T_VAR VarList T_END_VAR .
+
+    $padrão  reduzir usando a regra 51 (VarListContainer)
+
+
+State 101
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM . T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_ID  deslocar, e ir ao estado 112
+
+
+State 102
+
+   36 EcAction: T_ID T_ARROW T_ID .
+
+    $padrão  reduzir usando a regra 36 (EcAction)
+
+
+State 103
+
+   33 EcActionsListComa: EcActionsListComa T_COMA EcAction .
+
+    $padrão  reduzir usando a regra 33 (EcActionsListComa)
+
+
+State 104
+
+   45 EcTrans: T_ID T_TO T_ID . T_ASSIGNMENT Expr $@12 T_SEMICOLON
+
+    T_ASSIGNMENT  deslocar, e ir ao estado 113
+
+
+State 105
+
+   68 FbsListContainer: T_FBS . FbsList T_END_FBS
+
+    T_ID  deslocar, e ir ao estado 114
+
+    FbsList         ir ao estado 115
+    FbsDeclaration  ir ao estado 116
+
+
+State 106
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 EventInputListContainer EventOutputListContainer EcStatesListContainer EcTransListContainer VarInputListContainer VarOutputListContainer VarListContainer $@8 FbContinue . T_END_FUNCTION_BLOCK
+
+    T_END_FUNCTION_BLOCK  deslocar, e ir ao estado 117
+
+
+State 107
+
+   18 FbContinue: FbsListContainer . EventConnListContainer DataConnListContainer
+
+    T_EVENT_CONNECTIONS  deslocar, e ir ao estado 118
+
+    EventConnListContainer  ir ao estado 119
+
+
+State 108
+
+   17 FbContinue: AlgorithmList .
+   85 AlgorithmList: AlgorithmList . Algorithm
+
+    T_ALGORITHM  deslocar, e ir ao estado 120
+
+    $padrão  reduzir usando a regra 17 (FbContinue)
+
+    Algorithm  ir ao estado 121
+
+
+State 109
+
+   67 Resource: T_RESOURCE T_ID T_TWO_POINTS T_ID T_OP . T_CP $@15 FbsListContainer EventConnListContainer DataConnListContainer T_END_RESOURCE
+
+    T_CP  deslocar, e ir ao estado 122
+
+
+State 110
+
+   56 VarDeclAssig: T_ASSIGNMENT . T_NUMBER
+
+    T_NUMBER  deslocar, e ir ao estado 123
+
+
+State 111
+
+   54 VarDecl: T_ID T_TWO_POINTS T_ID VarDeclAssig . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 124
+
+
+State 112
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID . T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_TWO_POINTS  deslocar, e ir ao estado 125
+
+
+State 113
+
+   45 EcTrans: T_ID T_TO T_ID T_ASSIGNMENT . Expr $@12 T_SEMICOLON
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Expr                ir ao estado 135
+    Logical_Expr        ir ao estado 136
+    Logical_Expr_p2     ir ao estado 137
+    Logical_Expr_p1     ir ao estado 138
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 114
+
+   71 FbsDeclaration: T_ID . T_TWO_POINTS T_ID T_SEMICOLON
+   73               | T_ID . T_TWO_POINTS T_ID T_OP $@16 ConstAssigList T_CP T_SEMICOLON
+
+    T_TWO_POINTS  deslocar, e ir ao estado 143
+
+
+State 115
+
+   68 FbsListContainer: T_FBS FbsList . T_END_FBS
+   69 FbsList: FbsList . FbsDeclaration
+
+    T_END_FBS  deslocar, e ir ao estado 144
+    T_ID       deslocar, e ir ao estado 114
+
+    FbsDeclaration  ir ao estado 145
+
+
+State 116
+
+   70 FbsList: FbsDeclaration .
+
+    $padrão  reduzir usando a regra 70 (FbsList)
+
+
+State 117
+
+   16 FunctionBlock: T_FUNCTION_BLOCK T_ID $@7 EventInputListContainer EventOutputListContainer EcStatesListContainer EcTransListContainer VarInputListContainer VarOutputListContainer VarListContainer $@8 FbContinue T_END_FUNCTION_BLOCK .
+
+    $padrão  reduzir usando a regra 16 (FunctionBlock)
+
+
+State 118
+
+   78 EventConnListContainer: T_EVENT_CONNECTIONS . $@17 ConnectionList T_END_CONNECTIONS
+
+    $padrão  reduzir usando a regra 77 ($@17)
+
+    $@17  ir ao estado 146
+
+
+State 119
+
+   18 FbContinue: FbsListContainer EventConnListContainer . DataConnListContainer
+
+    T_DATA_CONNECTIONS  deslocar, e ir ao estado 147
+
+    DataConnListContainer  ir ao estado 148
+
+
+State 120
+
+   87 Algorithm: T_ALGORITHM . T_ID T_IN T_ID T_TWO_POINTS $@19 StatementList T_END_ALGORITHM
+
+    T_ID  deslocar, e ir ao estado 149
+
+
+State 121
+
+   85 AlgorithmList: AlgorithmList Algorithm .
+
+    $padrão  reduzir usando a regra 85 (AlgorithmList)
+
+
+State 122
+
+   67 Resource: T_RESOURCE T_ID T_TWO_POINTS T_ID T_OP T_CP . $@15 FbsListContainer EventConnListContainer DataConnListContainer T_END_RESOURCE
+
+    $padrão  reduzir usando a regra 66 ($@15)
+
+    $@15  ir ao estado 150
+
+
+State 123
+
+   56 VarDeclAssig: T_ASSIGNMENT T_NUMBER .
+
+    $padrão  reduzir usando a regra 56 (VarDeclAssig)
+
+
+State 124
+
+   54 VarDecl: T_ID T_TWO_POINTS T_ID VarDeclAssig T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 54 (VarDecl)
+
+
+State 125
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS . $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    $padrão  reduzir usando a regra 9 ($@3)
+
+    $@3  ir ao estado 151
+
+
+State 126
+
+  145 Factor: T_OP . Expr T_CP
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Expr                ir ao estado 152
+    Logical_Expr        ir ao estado 136
+    Logical_Expr_p2     ir ao estado 137
+    Logical_Expr_p1     ir ao estado 138
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 127
+
+  146 Factor: T_NOT . Factor
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    Call_stat  ir ao estado 134
+    Factor     ir ao estado 153
+
+
+State 128
+
+  147 Factor: T_ID .
+
+    $padrão  reduzir usando a regra 147 (Factor)
+
+
+State 129
+
+  143 Factor: T_NUMBER .
+
+    $padrão  reduzir usando a regra 143 (Factor)
+
+
+State 130
+
+  144 Factor: T_NUMBER_REAL .
+
+    $padrão  reduzir usando a regra 144 (Factor)
+
+
+State 131
+
+  114 Call_stat: T_BI_SET_REG . T_OP Expr T_COMA Expr T_CP
+
+    T_OP  deslocar, e ir ao estado 154
+
+
+State 132
+
+  115 Call_stat: T_BI_GET_REG . T_OP Expr T_CP
+
+    T_OP  deslocar, e ir ao estado 155
+
+
+State 133
+
+  116 Call_stat: T_BI_GET_REG_REAL . T_OP Expr T_CP
+
+    T_OP  deslocar, e ir ao estado 156
+
+
+State 134
+
+  148 Factor: Call_stat .
+
+    $padrão  reduzir usando a regra 148 (Factor)
+
+
+State 135
+
+   45 EcTrans: T_ID T_TO T_ID T_ASSIGNMENT Expr . $@12 T_SEMICOLON
+
+    $padrão  reduzir usando a regra 44 ($@12)
+
+    $@12  ir ao estado 157
+
+
+State 136
+
+  128 Expr: Logical_Expr .
+  129 Logical_Expr: Logical_Expr . T_OR M Logical_Expr_p2
+
+    T_OR  deslocar, e ir ao estado 158
+
+    $padrão  reduzir usando a regra 128 (Expr)
+
+
+State 137
+
+  130 Logical_Expr: Logical_Expr_p2 .
+  131 Logical_Expr_p2: Logical_Expr_p2 . T_AND M Logical_Expr_p1
+
+    T_AND  deslocar, e ir ao estado 159
+
+    $padrão  reduzir usando a regra 130 (Logical_Expr)
+
+
+State 138
+
+  132 Logical_Expr_p2: Logical_Expr_p1 .
+
+    $padrão  reduzir usando a regra 132 (Logical_Expr_p2)
+
+
+State 139
+
+  134 Logical_Expr_p1: Relational_Expr .
+  135 Relational_Expr: Relational_Expr . Relational_Operator Arithmetic_Expr
+
+    T_GT  deslocar, e ir ao estado 160
+    T_LT  deslocar, e ir ao estado 161
+    T_EQ  deslocar, e ir ao estado 162
+    T_GE  deslocar, e ir ao estado 163
+    T_LE  deslocar, e ir ao estado 164
+
+    $padrão  reduzir usando a regra 134 (Logical_Expr_p1)
+
+    Relational_Operator  ir ao estado 165
+
+
+State 140
+
+  136 Relational_Expr: Arithmetic_Expr .
+  137 Arithmetic_Expr: Arithmetic_Expr . T_ADD Arithmetic_Expr_p1
+  138                | Arithmetic_Expr . T_SUB Arithmetic_Expr_p1
+
+    T_ADD  deslocar, e ir ao estado 166
+    T_SUB  deslocar, e ir ao estado 167
+
+    $padrão  reduzir usando a regra 136 (Relational_Expr)
+
+
+State 141
+
+  139 Arithmetic_Expr: Arithmetic_Expr_p1 .
+  140 Arithmetic_Expr_p1: Arithmetic_Expr_p1 . T_MUL Factor
+  141                   | Arithmetic_Expr_p1 . T_DIV Factor
+
+    T_DIV  deslocar, e ir ao estado 168
+    T_MUL  deslocar, e ir ao estado 169
+
+    $padrão  reduzir usando a regra 139 (Arithmetic_Expr)
+
+
+State 142
+
+  142 Arithmetic_Expr_p1: Factor .
+
+    $padrão  reduzir usando a regra 142 (Arithmetic_Expr_p1)
+
+
+State 143
+
+   71 FbsDeclaration: T_ID T_TWO_POINTS . T_ID T_SEMICOLON
+   73               | T_ID T_TWO_POINTS . T_ID T_OP $@16 ConstAssigList T_CP T_SEMICOLON
+
+    T_ID  deslocar, e ir ao estado 170
+
+
+State 144
+
+   68 FbsListContainer: T_FBS FbsList T_END_FBS .
+
+    $padrão  reduzir usando a regra 68 (FbsListContainer)
+
+
+State 145
+
+   69 FbsList: FbsList FbsDeclaration .
+
+    $padrão  reduzir usando a regra 69 (FbsList)
+
+
+State 146
+
+   78 EventConnListContainer: T_EVENT_CONNECTIONS $@17 . ConnectionList T_END_CONNECTIONS
+
+    T_ID  deslocar, e ir ao estado 171
+
+    ConnectionList  ir ao estado 172
+    Connection      ir ao estado 173
+
+
+State 147
+
+   80 DataConnListContainer: T_DATA_CONNECTIONS . $@18 ConnectionList T_END_CONNECTIONS
+
+    $padrão  reduzir usando a regra 79 ($@18)
+
+    $@18  ir ao estado 174
+
+
+State 148
+
+   18 FbContinue: FbsListContainer EventConnListContainer DataConnListContainer .
+
+    $padrão  reduzir usando a regra 18 (FbContinue)
+
+
+State 149
+
+   87 Algorithm: T_ALGORITHM T_ID . T_IN T_ID T_TWO_POINTS $@19 StatementList T_END_ALGORITHM
+
+    T_IN  deslocar, e ir ao estado 175
+
+
+State 150
+
+   67 Resource: T_RESOURCE T_ID T_TWO_POINTS T_ID T_OP T_CP $@15 . FbsListContainer EventConnListContainer DataConnListContainer T_END_RESOURCE
+
+    T_FBS  deslocar, e ir ao estado 105
+
+    FbsListContainer  ir ao estado 176
+
+
+State 151
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 . StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    $padrão  reduzir usando a regra 88 (StatementList)
+
+    StatementList  ir ao estado 177
+
+
+State 152
+
+  145 Factor: T_OP Expr . T_CP
+
+    T_CP  deslocar, e ir ao estado 178
+
+
+State 153
+
+  146 Factor: T_NOT Factor .
+
+    $padrão  reduzir usando a regra 146 (Factor)
+
+
+State 154
+
+  114 Call_stat: T_BI_SET_REG T_OP . Expr T_COMA Expr T_CP
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Expr                ir ao estado 179
+    Logical_Expr        ir ao estado 136
+    Logical_Expr_p2     ir ao estado 137
+    Logical_Expr_p1     ir ao estado 138
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 155
+
+  115 Call_stat: T_BI_GET_REG T_OP . Expr T_CP
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Expr                ir ao estado 180
+    Logical_Expr        ir ao estado 136
+    Logical_Expr_p2     ir ao estado 137
+    Logical_Expr_p1     ir ao estado 138
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 156
+
+  116 Call_stat: T_BI_GET_REG_REAL T_OP . Expr T_CP
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Expr                ir ao estado 181
+    Logical_Expr        ir ao estado 136
+    Logical_Expr_p2     ir ao estado 137
+    Logical_Expr_p1     ir ao estado 138
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 157
+
+   45 EcTrans: T_ID T_TO T_ID T_ASSIGNMENT Expr $@12 . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 182
+
+
+State 158
+
+  129 Logical_Expr: Logical_Expr T_OR . M Logical_Expr_p2
+
+    $padrão  reduzir usando a regra 127 (M)
+
+    M  ir ao estado 183
+
+
+State 159
+
+  131 Logical_Expr_p2: Logical_Expr_p2 T_AND . M Logical_Expr_p1
+
+    $padrão  reduzir usando a regra 127 (M)
+
+    M  ir ao estado 184
+
+
+State 160
+
+  149 Relational_Operator: T_GT .
+
+    $padrão  reduzir usando a regra 149 (Relational_Operator)
+
+
+State 161
+
+  151 Relational_Operator: T_LT .
+
+    $padrão  reduzir usando a regra 151 (Relational_Operator)
+
+
+State 162
+
+  153 Relational_Operator: T_EQ .
+
+    $padrão  reduzir usando a regra 153 (Relational_Operator)
+
+
+State 163
+
+  150 Relational_Operator: T_GE .
+
+    $padrão  reduzir usando a regra 150 (Relational_Operator)
+
+
+State 164
+
+  152 Relational_Operator: T_LE .
+
+    $padrão  reduzir usando a regra 152 (Relational_Operator)
+
+
+State 165
+
+  135 Relational_Expr: Relational_Expr Relational_Operator . Arithmetic_Expr
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    Call_stat           ir ao estado 134
+    Arithmetic_Expr     ir ao estado 185
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 166
+
+  137 Arithmetic_Expr: Arithmetic_Expr T_ADD . Arithmetic_Expr_p1
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    Call_stat           ir ao estado 134
+    Arithmetic_Expr_p1  ir ao estado 186
+    Factor              ir ao estado 142
+
+
+State 167
+
+  138 Arithmetic_Expr: Arithmetic_Expr T_SUB . Arithmetic_Expr_p1
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    Call_stat           ir ao estado 134
+    Arithmetic_Expr_p1  ir ao estado 187
+    Factor              ir ao estado 142
+
+
+State 168
+
+  141 Arithmetic_Expr_p1: Arithmetic_Expr_p1 T_DIV . Factor
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    Call_stat  ir ao estado 134
+    Factor     ir ao estado 188
+
+
+State 169
+
+  140 Arithmetic_Expr_p1: Arithmetic_Expr_p1 T_MUL . Factor
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    Call_stat  ir ao estado 134
+    Factor     ir ao estado 189
+
+
+State 170
+
+   71 FbsDeclaration: T_ID T_TWO_POINTS T_ID . T_SEMICOLON
+   73               | T_ID T_TWO_POINTS T_ID . T_OP $@16 ConstAssigList T_CP T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 190
+    T_OP         deslocar, e ir ao estado 191
+
+
+State 171
+
+   83 Connection: T_ID . T_POINT T_ID T_TO T_ID T_POINT T_ID T_SEMICOLON
+
+    T_POINT  deslocar, e ir ao estado 192
+
+
+State 172
+
+   78 EventConnListContainer: T_EVENT_CONNECTIONS $@17 ConnectionList . T_END_CONNECTIONS
+   81 ConnectionList: ConnectionList . Connection
+
+    T_END_CONNECTIONS  deslocar, e ir ao estado 193
+    T_ID               deslocar, e ir ao estado 171
+
+    Connection  ir ao estado 194
+
+
+State 173
+
+   82 ConnectionList: Connection .
+
+    $padrão  reduzir usando a regra 82 (ConnectionList)
+
+
+State 174
+
+   80 DataConnListContainer: T_DATA_CONNECTIONS $@18 . ConnectionList T_END_CONNECTIONS
+
+    T_ID  deslocar, e ir ao estado 171
+
+    ConnectionList  ir ao estado 195
+    Connection      ir ao estado 173
+
+
+State 175
+
+   87 Algorithm: T_ALGORITHM T_ID T_IN . T_ID T_TWO_POINTS $@19 StatementList T_END_ALGORITHM
+
+    T_ID  deslocar, e ir ao estado 196
+
+
+State 176
+
+   67 Resource: T_RESOURCE T_ID T_TWO_POINTS T_ID T_OP T_CP $@15 FbsListContainer . EventConnListContainer DataConnListContainer T_END_RESOURCE
+
+    T_EVENT_CONNECTIONS  deslocar, e ir ao estado 118
+
+    EventConnListContainer  ir ao estado 197
+
+
+State 177
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList . T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+   89 StatementList: StatementList . Assignment
+   90              | StatementList . If_stat
+   91              | StatementList . While_stat
+   92              | StatementList . Call_stat T_SEMICOLON
+   93              | StatementList . AsmBlock
+
+    T_END_ALGORITHM    deslocar, e ir ao estado 198
+    T_ID               deslocar, e ir ao estado 199
+    T_IF               deslocar, e ir ao estado 200
+    T_WHILE            deslocar, e ir ao estado 201
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+    T_ASM              deslocar, e ir ao estado 202
+
+    AsmBlock    ir ao estado 203
+    Call_stat   ir ao estado 204
+    While_stat  ir ao estado 205
+    If_stat     ir ao estado 206
+    Assignment  ir ao estado 207
+
+
+State 178
+
+  145 Factor: T_OP Expr T_CP .
+
+    $padrão  reduzir usando a regra 145 (Factor)
+
+
+State 179
+
+  114 Call_stat: T_BI_SET_REG T_OP Expr . T_COMA Expr T_CP
+
+    T_COMA  deslocar, e ir ao estado 208
+
+
+State 180
+
+  115 Call_stat: T_BI_GET_REG T_OP Expr . T_CP
+
+    T_CP  deslocar, e ir ao estado 209
+
+
+State 181
+
+  116 Call_stat: T_BI_GET_REG_REAL T_OP Expr . T_CP
+
+    T_CP  deslocar, e ir ao estado 210
+
+
+State 182
+
+   45 EcTrans: T_ID T_TO T_ID T_ASSIGNMENT Expr $@12 T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 45 (EcTrans)
+
+
+State 183
+
+  129 Logical_Expr: Logical_Expr T_OR M . Logical_Expr_p2
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Logical_Expr_p2     ir ao estado 211
+    Logical_Expr_p1     ir ao estado 138
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 184
+
+  131 Logical_Expr_p2: Logical_Expr_p2 T_AND M . Logical_Expr_p1
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Logical_Expr_p1     ir ao estado 212
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 185
+
+  135 Relational_Expr: Relational_Expr Relational_Operator Arithmetic_Expr .
+  137 Arithmetic_Expr: Arithmetic_Expr . T_ADD Arithmetic_Expr_p1
+  138                | Arithmetic_Expr . T_SUB Arithmetic_Expr_p1
+
+    T_ADD  deslocar, e ir ao estado 166
+    T_SUB  deslocar, e ir ao estado 167
+
+    $padrão  reduzir usando a regra 135 (Relational_Expr)
+
+
+State 186
+
+  137 Arithmetic_Expr: Arithmetic_Expr T_ADD Arithmetic_Expr_p1 .
+  140 Arithmetic_Expr_p1: Arithmetic_Expr_p1 . T_MUL Factor
+  141                   | Arithmetic_Expr_p1 . T_DIV Factor
+
+    T_DIV  deslocar, e ir ao estado 168
+    T_MUL  deslocar, e ir ao estado 169
+
+    $padrão  reduzir usando a regra 137 (Arithmetic_Expr)
+
+
+State 187
+
+  138 Arithmetic_Expr: Arithmetic_Expr T_SUB Arithmetic_Expr_p1 .
+  140 Arithmetic_Expr_p1: Arithmetic_Expr_p1 . T_MUL Factor
+  141                   | Arithmetic_Expr_p1 . T_DIV Factor
+
+    T_DIV  deslocar, e ir ao estado 168
+    T_MUL  deslocar, e ir ao estado 169
+
+    $padrão  reduzir usando a regra 138 (Arithmetic_Expr)
+
+
+State 188
+
+  141 Arithmetic_Expr_p1: Arithmetic_Expr_p1 T_DIV Factor .
+
+    $padrão  reduzir usando a regra 141 (Arithmetic_Expr_p1)
+
+
+State 189
+
+  140 Arithmetic_Expr_p1: Arithmetic_Expr_p1 T_MUL Factor .
+
+    $padrão  reduzir usando a regra 140 (Arithmetic_Expr_p1)
+
+
+State 190
+
+   71 FbsDeclaration: T_ID T_TWO_POINTS T_ID T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 71 (FbsDeclaration)
+
+
+State 191
+
+   73 FbsDeclaration: T_ID T_TWO_POINTS T_ID T_OP . $@16 ConstAssigList T_CP T_SEMICOLON
+
+    $padrão  reduzir usando a regra 72 ($@16)
+
+    $@16  ir ao estado 213
+
+
+State 192
+
+   83 Connection: T_ID T_POINT . T_ID T_TO T_ID T_POINT T_ID T_SEMICOLON
+
+    T_ID  deslocar, e ir ao estado 214
+
+
+State 193
+
+   78 EventConnListContainer: T_EVENT_CONNECTIONS $@17 ConnectionList T_END_CONNECTIONS .
+
+    $padrão  reduzir usando a regra 78 (EventConnListContainer)
+
+
+State 194
+
+   81 ConnectionList: ConnectionList Connection .
+
+    $padrão  reduzir usando a regra 81 (ConnectionList)
+
+
+State 195
+
+   80 DataConnListContainer: T_DATA_CONNECTIONS $@18 ConnectionList . T_END_CONNECTIONS
+   81 ConnectionList: ConnectionList . Connection
+
+    T_END_CONNECTIONS  deslocar, e ir ao estado 215
+    T_ID               deslocar, e ir ao estado 171
+
+    Connection  ir ao estado 194
+
+
+State 196
+
+   87 Algorithm: T_ALGORITHM T_ID T_IN T_ID . T_TWO_POINTS $@19 StatementList T_END_ALGORITHM
+
+    T_TWO_POINTS  deslocar, e ir ao estado 216
+
+
+State 197
+
+   67 Resource: T_RESOURCE T_ID T_TWO_POINTS T_ID T_OP T_CP $@15 FbsListContainer EventConnListContainer . DataConnListContainer T_END_RESOURCE
+
+    T_DATA_CONNECTIONS  deslocar, e ir ao estado 147
+
+    DataConnListContainer  ir ao estado 217
+
+
+State 198
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM . $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    $padrão  reduzir usando a regra 10 ($@4)
+
+    $@4  ir ao estado 218
+
+
+State 199
+
+  126 Assignment: T_ID . T_ASSIGNMENT Expr T_SEMICOLON
+
+    T_ASSIGNMENT  deslocar, e ir ao estado 219
+
+
+State 200
+
+  119 If_stat: T_IF . Expr T_THEN $@20 StatementList IFContinue
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Expr                ir ao estado 220
+    Logical_Expr        ir ao estado 136
+    Logical_Expr_p2     ir ao estado 137
+    Logical_Expr_p1     ir ao estado 138
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 201
+
+  117 While_stat: T_WHILE . Expr T_DO StatementList T_END_WHILE T_SEMICOLON
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Expr                ir ao estado 221
+    Logical_Expr        ir ao estado 136
+    Logical_Expr_p2     ir ao estado 137
+    Logical_Expr_p1     ir ao estado 138
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 202
+
+   94 AsmBlock: T_ASM . AsmCode T_END_ASM
+
+    $padrão  reduzir usando a regra 95 (AsmCode)
+
+    AsmCode  ir ao estado 222
+
+
+State 203
+
+   93 StatementList: StatementList AsmBlock .
+
+    $padrão  reduzir usando a regra 93 (StatementList)
+
+
+State 204
+
+   92 StatementList: StatementList Call_stat . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 223
+
+
+State 205
+
+   91 StatementList: StatementList While_stat .
+
+    $padrão  reduzir usando a regra 91 (StatementList)
+
+
+State 206
+
+   90 StatementList: StatementList If_stat .
+
+    $padrão  reduzir usando a regra 90 (StatementList)
+
+
+State 207
+
+   89 StatementList: StatementList Assignment .
+
+    $padrão  reduzir usando a regra 89 (StatementList)
+
+
+State 208
+
+  114 Call_stat: T_BI_SET_REG T_OP Expr T_COMA . Expr T_CP
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Expr                ir ao estado 224
+    Logical_Expr        ir ao estado 136
+    Logical_Expr_p2     ir ao estado 137
+    Logical_Expr_p1     ir ao estado 138
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 209
+
+  115 Call_stat: T_BI_GET_REG T_OP Expr T_CP .
+
+    $padrão  reduzir usando a regra 115 (Call_stat)
+
+
+State 210
+
+  116 Call_stat: T_BI_GET_REG_REAL T_OP Expr T_CP .
+
+    $padrão  reduzir usando a regra 116 (Call_stat)
+
+
+State 211
+
+  129 Logical_Expr: Logical_Expr T_OR M Logical_Expr_p2 .
+  131 Logical_Expr_p2: Logical_Expr_p2 . T_AND M Logical_Expr_p1
+
+    T_AND  deslocar, e ir ao estado 159
+
+    $padrão  reduzir usando a regra 129 (Logical_Expr)
+
+
+State 212
+
+  131 Logical_Expr_p2: Logical_Expr_p2 T_AND M Logical_Expr_p1 .
+
+    $padrão  reduzir usando a regra 131 (Logical_Expr_p2)
+
+
+State 213
+
+   73 FbsDeclaration: T_ID T_TWO_POINTS T_ID T_OP $@16 . ConstAssigList T_CP T_SEMICOLON
+
+    T_ID  deslocar, e ir ao estado 225
+
+    ConstAssigList  ir ao estado 226
+    ConstAssig      ir ao estado 227
+
+
+State 214
+
+   83 Connection: T_ID T_POINT T_ID . T_TO T_ID T_POINT T_ID T_SEMICOLON
+
+    T_TO  deslocar, e ir ao estado 228
+
+
+State 215
+
+   80 DataConnListContainer: T_DATA_CONNECTIONS $@18 ConnectionList T_END_CONNECTIONS .
+
+    $padrão  reduzir usando a regra 80 (DataConnListContainer)
+
+
+State 216
+
+   87 Algorithm: T_ALGORITHM T_ID T_IN T_ID T_TWO_POINTS . $@19 StatementList T_END_ALGORITHM
+
+    $padrão  reduzir usando a regra 86 ($@19)
+
+    $@19  ir ao estado 229
+
+
+State 217
+
+   67 Resource: T_RESOURCE T_ID T_TWO_POINTS T_ID T_OP T_CP $@15 FbsListContainer EventConnListContainer DataConnListContainer . T_END_RESOURCE
+
+    T_END_RESOURCE  deslocar, e ir ao estado 230
+
+
+State 218
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 . T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_ALGORITHM  deslocar, e ir ao estado 231
+
+
+State 219
+
+  126 Assignment: T_ID T_ASSIGNMENT . Expr T_SEMICOLON
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Expr                ir ao estado 232
+    Logical_Expr        ir ao estado 136
+    Logical_Expr_p2     ir ao estado 137
+    Logical_Expr_p1     ir ao estado 138
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 220
+
+  119 If_stat: T_IF Expr . T_THEN $@20 StatementList IFContinue
+
+    T_THEN  deslocar, e ir ao estado 233
+
+
+State 221
+
+  117 While_stat: T_WHILE Expr . T_DO StatementList T_END_WHILE T_SEMICOLON
+
+    T_DO  deslocar, e ir ao estado 234
+
+
+State 222
+
+   94 AsmBlock: T_ASM AsmCode . T_END_ASM
+   96 AsmCode: AsmCode . Instruction
+
+    T_OR       deslocar, e ir ao estado 235
+    T_ID       deslocar, e ir ao estado 236
+    T_IF       deslocar, e ir ao estado 237
+    T_END_ASM  deslocar, e ir ao estado 238
+    T_NISND    deslocar, e ir ao estado 239
+    T_NIRCV    deslocar, e ir ao estado 240
+    T_STORE    deslocar, e ir ao estado 241
+    T_LOAD     deslocar, e ir ao estado 242
+    T_GOTO     deslocar, e ir ao estado 243
+    T_CONST    deslocar, e ir ao estado 244
+    T_IFEQ     deslocar, e ir ao estado 245
+
+    Instruction  ir ao estado 246
+    AsmIf        ir ao estado 247
+
+
+State 223
+
+   92 StatementList: StatementList Call_stat T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 92 (StatementList)
+
+
+State 224
+
+  114 Call_stat: T_BI_SET_REG T_OP Expr T_COMA Expr . T_CP
+
+    T_CP  deslocar, e ir ao estado 248
+
+
+State 225
+
+   76 ConstAssig: T_ID . T_ASSIGNMENT T_NUMBER T_SEMICOLON
+
+    T_ASSIGNMENT  deslocar, e ir ao estado 249
+
+
+State 226
+
+   73 FbsDeclaration: T_ID T_TWO_POINTS T_ID T_OP $@16 ConstAssigList . T_CP T_SEMICOLON
+   74 ConstAssigList: ConstAssigList . ConstAssig
+
+    T_CP  deslocar, e ir ao estado 250
+    T_ID  deslocar, e ir ao estado 225
+
+    ConstAssig  ir ao estado 251
+
+
+State 227
+
+   75 ConstAssigList: ConstAssig .
+
+    $padrão  reduzir usando a regra 75 (ConstAssigList)
+
+
+State 228
+
+   83 Connection: T_ID T_POINT T_ID T_TO . T_ID T_POINT T_ID T_SEMICOLON
+
+    T_ID  deslocar, e ir ao estado 252
+
+
+State 229
+
+   87 Algorithm: T_ALGORITHM T_ID T_IN T_ID T_TWO_POINTS $@19 . StatementList T_END_ALGORITHM
+
+    $padrão  reduzir usando a regra 88 (StatementList)
+
+    StatementList  ir ao estado 253
+
+
+State 230
+
+   67 Resource: T_RESOURCE T_ID T_TWO_POINTS T_ID T_OP T_CP $@15 FbsListContainer EventConnListContainer DataConnListContainer T_END_RESOURCE .
+
+    $padrão  reduzir usando a regra 67 (Resource)
+
+
+State 231
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM . T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_ID  deslocar, e ir ao estado 254
+
+
+State 232
+
+  126 Assignment: T_ID T_ASSIGNMENT Expr . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 255
+
+
+State 233
+
+  119 If_stat: T_IF Expr T_THEN . $@20 StatementList IFContinue
+
+    $padrão  reduzir usando a regra 118 ($@20)
+
+    $@20  ir ao estado 256
+
+
+State 234
+
+  117 While_stat: T_WHILE Expr T_DO . StatementList T_END_WHILE T_SEMICOLON
+
+    $padrão  reduzir usando a regra 88 (StatementList)
+
+    StatementList  ir ao estado 257
+
+
+State 235
+
+  102 Instruction: T_OR .
+
+    $padrão  reduzir usando a regra 102 (Instruction)
+
+
+State 236
+
+  105 Instruction: T_ID . T_TWO_POINTS
+
+    T_TWO_POINTS  deslocar, e ir ao estado 258
+
+
+State 237
+
+  106 AsmIf: T_IF .
+
+    $padrão  reduzir usando a regra 106 (AsmIf)
+
+
+State 238
+
+   94 AsmBlock: T_ASM AsmCode T_END_ASM .
+
+    $padrão  reduzir usando a regra 94 (AsmBlock)
+
+
+State 239
+
+  101 Instruction: T_NISND .
+
+    $padrão  reduzir usando a regra 101 (Instruction)
+
+
+State 240
+
+  103 Instruction: T_NIRCV .
+
+    $padrão  reduzir usando a regra 103 (Instruction)
+
+
+State 241
+
+   99 Instruction: T_STORE . AsmIdNum
+
+    T_ADD     deslocar, e ir ao estado 259
+    T_ID      deslocar, e ir ao estado 260
+    T_NUMBER  deslocar, e ir ao estado 261
+
+    AsmIdNum  ir ao estado 262
+
+
+State 242
+
+   97 Instruction: T_LOAD . AsmIdNum
+
+    T_ADD     deslocar, e ir ao estado 259
+    T_ID      deslocar, e ir ao estado 260
+    T_NUMBER  deslocar, e ir ao estado 261
+
+    AsmIdNum  ir ao estado 263
+
+
+State 243
+
+  104 Instruction: T_GOTO . AsmIdNumGoto
+
+    T_ADD     deslocar, e ir ao estado 264
+    T_ID      deslocar, e ir ao estado 265
+    T_NUMBER  deslocar, e ir ao estado 266
+
+    AsmIdNumGoto  ir ao estado 267
+
+
+State 244
+
+   98 Instruction: T_CONST . T_NUMBER
+
+    T_NUMBER  deslocar, e ir ao estado 268
+
+
+State 245
+
+  107 AsmIf: T_IFEQ .
+
+    $padrão  reduzir usando a regra 107 (AsmIf)
+
+
+State 246
+
+   96 AsmCode: AsmCode Instruction .
+
+    $padrão  reduzir usando a regra 96 (AsmCode)
+
+
+State 247
+
+  100 Instruction: AsmIf . T_GOTO AsmIdNumGoto
+
+    T_GOTO  deslocar, e ir ao estado 269
+
+
+State 248
+
+  114 Call_stat: T_BI_SET_REG T_OP Expr T_COMA Expr T_CP .
+
+    $padrão  reduzir usando a regra 114 (Call_stat)
+
+
+State 249
+
+   76 ConstAssig: T_ID T_ASSIGNMENT . T_NUMBER T_SEMICOLON
+
+    T_NUMBER  deslocar, e ir ao estado 270
+
+
+State 250
+
+   73 FbsDeclaration: T_ID T_TWO_POINTS T_ID T_OP $@16 ConstAssigList T_CP . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 271
+
+
+State 251
+
+   74 ConstAssigList: ConstAssigList ConstAssig .
+
+    $padrão  reduzir usando a regra 74 (ConstAssigList)
+
+
+State 252
+
+   83 Connection: T_ID T_POINT T_ID T_TO T_ID . T_POINT T_ID T_SEMICOLON
+
+    T_POINT  deslocar, e ir ao estado 272
+
+
+State 253
+
+   87 Algorithm: T_ALGORITHM T_ID T_IN T_ID T_TWO_POINTS $@19 StatementList . T_END_ALGORITHM
+   89 StatementList: StatementList . Assignment
+   90              | StatementList . If_stat
+   91              | StatementList . While_stat
+   92              | StatementList . Call_stat T_SEMICOLON
+   93              | StatementList . AsmBlock
+
+    T_END_ALGORITHM    deslocar, e ir ao estado 273
+    T_ID               deslocar, e ir ao estado 199
+    T_IF               deslocar, e ir ao estado 200
+    T_WHILE            deslocar, e ir ao estado 201
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+    T_ASM              deslocar, e ir ao estado 202
+
+    AsmBlock    ir ao estado 203
+    Call_stat   ir ao estado 204
+    While_stat  ir ao estado 205
+    If_stat     ir ao estado 206
+    Assignment  ir ao estado 207
+
+
+State 254
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID . T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    T_TWO_POINTS  deslocar, e ir ao estado 274
+
+
+State 255
+
+  126 Assignment: T_ID T_ASSIGNMENT Expr T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 126 (Assignment)
+
+
+State 256
+
+  119 If_stat: T_IF Expr T_THEN $@20 . StatementList IFContinue
+
+    $padrão  reduzir usando a regra 88 (StatementList)
+
+    StatementList  ir ao estado 275
+
+
+State 257
+
+   89 StatementList: StatementList . Assignment
+   90              | StatementList . If_stat
+   91              | StatementList . While_stat
+   92              | StatementList . Call_stat T_SEMICOLON
+   93              | StatementList . AsmBlock
+  117 While_stat: T_WHILE Expr T_DO StatementList . T_END_WHILE T_SEMICOLON
+
+    T_ID               deslocar, e ir ao estado 199
+    T_IF               deslocar, e ir ao estado 200
+    T_WHILE            deslocar, e ir ao estado 201
+    T_END_WHILE        deslocar, e ir ao estado 276
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+    T_ASM              deslocar, e ir ao estado 202
+
+    AsmBlock    ir ao estado 203
+    Call_stat   ir ao estado 204
+    While_stat  ir ao estado 205
+    If_stat     ir ao estado 206
+    Assignment  ir ao estado 207
+
+
+State 258
+
+  105 Instruction: T_ID T_TWO_POINTS .
+
+    $padrão  reduzir usando a regra 105 (Instruction)
+
+
+State 259
+
+  113 AsmIdNum: T_ADD . T_NUMBER
+
+    T_NUMBER  deslocar, e ir ao estado 277
+
+
+State 260
+
+  111 AsmIdNum: T_ID .
+
+    $padrão  reduzir usando a regra 111 (AsmIdNum)
+
+
+State 261
+
+  112 AsmIdNum: T_NUMBER .
+
+    $padrão  reduzir usando a regra 112 (AsmIdNum)
+
+
+State 262
+
+   99 Instruction: T_STORE AsmIdNum .
+
+    $padrão  reduzir usando a regra 99 (Instruction)
+
+
+State 263
+
+   97 Instruction: T_LOAD AsmIdNum .
+
+    $padrão  reduzir usando a regra 97 (Instruction)
+
+
+State 264
+
+  110 AsmIdNumGoto: T_ADD . T_NUMBER
+
+    T_NUMBER  deslocar, e ir ao estado 278
+
+
+State 265
+
+  108 AsmIdNumGoto: T_ID .
+
+    $padrão  reduzir usando a regra 108 (AsmIdNumGoto)
+
+
+State 266
+
+  109 AsmIdNumGoto: T_NUMBER .
+
+    $padrão  reduzir usando a regra 109 (AsmIdNumGoto)
+
+
+State 267
+
+  104 Instruction: T_GOTO AsmIdNumGoto .
+
+    $padrão  reduzir usando a regra 104 (Instruction)
+
+
+State 268
+
+   98 Instruction: T_CONST T_NUMBER .
+
+    $padrão  reduzir usando a regra 98 (Instruction)
+
+
+State 269
+
+  100 Instruction: AsmIf T_GOTO . AsmIdNumGoto
+
+    T_ADD     deslocar, e ir ao estado 264
+    T_ID      deslocar, e ir ao estado 265
+    T_NUMBER  deslocar, e ir ao estado 266
+
+    AsmIdNumGoto  ir ao estado 279
+
+
+State 270
+
+   76 ConstAssig: T_ID T_ASSIGNMENT T_NUMBER . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 280
+
+
+State 271
+
+   73 FbsDeclaration: T_ID T_TWO_POINTS T_ID T_OP $@16 ConstAssigList T_CP T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 73 (FbsDeclaration)
+
+
+State 272
+
+   83 Connection: T_ID T_POINT T_ID T_TO T_ID T_POINT . T_ID T_SEMICOLON
+
+    T_ID  deslocar, e ir ao estado 281
+
+
+State 273
+
+   87 Algorithm: T_ALGORITHM T_ID T_IN T_ID T_TWO_POINTS $@19 StatementList T_END_ALGORITHM .
+
+    $padrão  reduzir usando a regra 87 (Algorithm)
+
+
+State 274
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS . $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    $padrão  reduzir usando a regra 11 ($@5)
+
+    $@5  ir ao estado 282
+
+
+State 275
+
+   89 StatementList: StatementList . Assignment
+   90              | StatementList . If_stat
+   91              | StatementList . While_stat
+   92              | StatementList . Call_stat T_SEMICOLON
+   93              | StatementList . AsmBlock
+  119 If_stat: T_IF Expr T_THEN $@20 StatementList . IFContinue
+
+    T_ID               deslocar, e ir ao estado 199
+    T_IF               deslocar, e ir ao estado 200
+    T_END_IF           deslocar, e ir ao estado 283
+    T_ELSE             deslocar, e ir ao estado 284
+    T_ELSIF            deslocar, e ir ao estado 285
+    T_WHILE            deslocar, e ir ao estado 201
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+    T_ASM              deslocar, e ir ao estado 202
+
+    AsmBlock    ir ao estado 203
+    Call_stat   ir ao estado 204
+    While_stat  ir ao estado 205
+    If_stat     ir ao estado 206
+    IFContinue  ir ao estado 286
+    Assignment  ir ao estado 207
+
+
+State 276
+
+  117 While_stat: T_WHILE Expr T_DO StatementList T_END_WHILE . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 287
+
+
+State 277
+
+  113 AsmIdNum: T_ADD T_NUMBER .
+
+    $padrão  reduzir usando a regra 113 (AsmIdNum)
+
+
+State 278
+
+  110 AsmIdNumGoto: T_ADD T_NUMBER .
+
+    $padrão  reduzir usando a regra 110 (AsmIdNumGoto)
+
+
+State 279
+
+  100 Instruction: AsmIf T_GOTO AsmIdNumGoto .
+
+    $padrão  reduzir usando a regra 100 (Instruction)
+
+
+State 280
+
+   76 ConstAssig: T_ID T_ASSIGNMENT T_NUMBER T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 76 (ConstAssig)
+
+
+State 281
+
+   83 Connection: T_ID T_POINT T_ID T_TO T_ID T_POINT T_ID . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 288
+
+
+State 282
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 . StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+
+    $padrão  reduzir usando a regra 88 (StatementList)
+
+    StatementList  ir ao estado 289
+
+
+State 283
+
+  120 IFContinue: T_END_IF . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 290
+
+
+State 284
+
+  122 IFContinue: T_ELSE . $@21 StatementList T_END_IF T_SEMICOLON
+
+    $padrão  reduzir usando a regra 121 ($@21)
+
+    $@21  ir ao estado 291
+
+
+State 285
+
+  125 IFContinue: T_ELSIF . $@22 Expr T_THEN $@23 StatementList IFContinue
+
+    $padrão  reduzir usando a regra 123 ($@22)
+
+    $@22  ir ao estado 292
+
+
+State 286
+
+  119 If_stat: T_IF Expr T_THEN $@20 StatementList IFContinue .
+
+    $padrão  reduzir usando a regra 119 (If_stat)
+
+
+State 287
+
+  117 While_stat: T_WHILE Expr T_DO StatementList T_END_WHILE T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 117 (While_stat)
+
+
+State 288
+
+   83 Connection: T_ID T_POINT T_ID T_TO T_ID T_POINT T_ID T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 83 (Connection)
+
+
+State 289
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList . T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK
+   89 StatementList: StatementList . Assignment
+   90              | StatementList . If_stat
+   91              | StatementList . While_stat
+   92              | StatementList . Call_stat T_SEMICOLON
+   93              | StatementList . AsmBlock
+
+    T_END_ALGORITHM    deslocar, e ir ao estado 293
+    T_ID               deslocar, e ir ao estado 199
+    T_IF               deslocar, e ir ao estado 200
+    T_WHILE            deslocar, e ir ao estado 201
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+    T_ASM              deslocar, e ir ao estado 202
+
+    AsmBlock    ir ao estado 203
+    Call_stat   ir ao estado 204
+    While_stat  ir ao estado 205
+    If_stat     ir ao estado 206
+    Assignment  ir ao estado 207
+
+
+State 290
+
+  120 IFContinue: T_END_IF T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 120 (IFContinue)
+
+
+State 291
+
+  122 IFContinue: T_ELSE $@21 . StatementList T_END_IF T_SEMICOLON
+
+    $padrão  reduzir usando a regra 88 (StatementList)
+
+    StatementList  ir ao estado 294
+
+
+State 292
+
+  125 IFContinue: T_ELSIF $@22 . Expr T_THEN $@23 StatementList IFContinue
+
+    T_OP               deslocar, e ir ao estado 126
+    T_NOT              deslocar, e ir ao estado 127
+    T_ID               deslocar, e ir ao estado 128
+    T_NUMBER           deslocar, e ir ao estado 129
+    T_NUMBER_REAL      deslocar, e ir ao estado 130
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+
+    $padrão  reduzir usando a regra 133 (Logical_Expr_p1)
+
+    Call_stat           ir ao estado 134
+    Expr                ir ao estado 295
+    Logical_Expr        ir ao estado 136
+    Logical_Expr_p2     ir ao estado 137
+    Logical_Expr_p1     ir ao estado 138
+    Relational_Expr     ir ao estado 139
+    Arithmetic_Expr     ir ao estado 140
+    Arithmetic_Expr_p1  ir ao estado 141
+    Factor              ir ao estado 142
+
+
+State 293
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM . $@6 T_END_FUNCTION_BLOCK
+
+    $padrão  reduzir usando a regra 12 ($@6)
+
+    $@6  ir ao estado 296
+
+
+State 294
+
+   89 StatementList: StatementList . Assignment
+   90              | StatementList . If_stat
+   91              | StatementList . While_stat
+   92              | StatementList . Call_stat T_SEMICOLON
+   93              | StatementList . AsmBlock
+  122 IFContinue: T_ELSE $@21 StatementList . T_END_IF T_SEMICOLON
+
+    T_ID               deslocar, e ir ao estado 199
+    T_IF               deslocar, e ir ao estado 200
+    T_END_IF           deslocar, e ir ao estado 297
+    T_WHILE            deslocar, e ir ao estado 201
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+    T_ASM              deslocar, e ir ao estado 202
+
+    AsmBlock    ir ao estado 203
+    Call_stat   ir ao estado 204
+    While_stat  ir ao estado 205
+    If_stat     ir ao estado 206
+    Assignment  ir ao estado 207
+
+
+State 295
+
+  125 IFContinue: T_ELSIF $@22 Expr . T_THEN $@23 StatementList IFContinue
+
+    T_THEN  deslocar, e ir ao estado 298
+
+
+State 296
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 . T_END_FUNCTION_BLOCK
+
+    T_END_FUNCTION_BLOCK  deslocar, e ir ao estado 299
+
+
+State 297
+
+  122 IFContinue: T_ELSE $@21 StatementList T_END_IF . T_SEMICOLON
+
+    T_SEMICOLON  deslocar, e ir ao estado 300
+
+
+State 298
+
+  125 IFContinue: T_ELSIF $@22 Expr T_THEN . $@23 StatementList IFContinue
+
+    $padrão  reduzir usando a regra 124 ($@23)
+
+    $@23  ir ao estado 301
+
+
+State 299
+
+   13 CustomFunctionBlock: T_CUSTOM T_FUNCTION_BLOCK T_ID $@1 EventInputListContainer EventOutputListContainer VarInputListContainer VarOutputListContainer VarListContainer $@2 T_ALGORITHM T_ID T_TWO_POINTS $@3 StatementList T_END_ALGORITHM $@4 T_ALGORITHM T_ID T_TWO_POINTS $@5 StatementList T_END_ALGORITHM $@6 T_END_FUNCTION_BLOCK .
+
+    $padrão  reduzir usando a regra 13 (CustomFunctionBlock)
+
+
+State 300
+
+  122 IFContinue: T_ELSE $@21 StatementList T_END_IF T_SEMICOLON .
+
+    $padrão  reduzir usando a regra 122 (IFContinue)
+
+
+State 301
+
+  125 IFContinue: T_ELSIF $@22 Expr T_THEN $@23 . StatementList IFContinue
+
+    $padrão  reduzir usando a regra 88 (StatementList)
+
+    StatementList  ir ao estado 302
+
+
+State 302
+
+   89 StatementList: StatementList . Assignment
+   90              | StatementList . If_stat
+   91              | StatementList . While_stat
+   92              | StatementList . Call_stat T_SEMICOLON
+   93              | StatementList . AsmBlock
+  125 IFContinue: T_ELSIF $@22 Expr T_THEN $@23 StatementList . IFContinue
+
+    T_ID               deslocar, e ir ao estado 199
+    T_IF               deslocar, e ir ao estado 200
+    T_END_IF           deslocar, e ir ao estado 283
+    T_ELSE             deslocar, e ir ao estado 284
+    T_ELSIF            deslocar, e ir ao estado 285
+    T_WHILE            deslocar, e ir ao estado 201
+    T_BI_SET_REG       deslocar, e ir ao estado 131
+    T_BI_GET_REG       deslocar, e ir ao estado 132
+    T_BI_GET_REG_REAL  deslocar, e ir ao estado 133
+    T_ASM              deslocar, e ir ao estado 202
+
+    AsmBlock    ir ao estado 203
+    Call_stat   ir ao estado 204
+    While_stat  ir ao estado 205
+    If_stat     ir ao estado 206
+    IFContinue  ir ao estado 303
+    Assignment  ir ao estado 207
+
+
+State 303
+
+  125 IFContinue: T_ELSIF $@22 Expr T_THEN $@23 StatementList IFContinue .
+
+    $padrão  reduzir usando a regra 125 (IFContinue)

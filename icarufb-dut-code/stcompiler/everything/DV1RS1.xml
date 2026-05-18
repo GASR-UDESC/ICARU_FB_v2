@@ -1,0 +1,20 @@
+<Request ID='0' Action='CREATE'>
+  <FB Name='SENSOR' Type='IO_READER'/>
+</Request>
+
+<Request ID='1' Action='CREATE'>
+  <FB Name='PUB_1' Type='PUBLISHER'/>
+</Request>
+
+<Request ID='2' Action='CREATE'>
+  <Connection Source='START.COLD' Destination='SENSOR.REQ'/>
+</Request>
+
+<Request ID='3' Action='CREATE'>
+  <Connection Source='SENSOR.RSP' Destination='PUB_1.REQ'/>
+</Request>
+
+<Request ID='4' Action='CREATE'>
+  <Connection Source='SENSOR.RD_1' Destination='PUB_1.SD_1'/>
+</Request>
+

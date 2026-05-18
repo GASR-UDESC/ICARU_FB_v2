@@ -1,0 +1,24 @@
+
+<devicemem name="ICARU_DEV" type="ICARU_PC" memory="4000">
+	<table>
+		<segment type="initial_block_pointer" from="0" size="2">2</segment>
+		<segment type="fbtype" name="Ta" from="2" size="5">012 023 158 152 236</segment>
+		<segment type="fbinstance" name="Ta1" fbtype="Ta" from="7" size="5">012 023 158 152 236</segment>
+	</table>
+	
+	<fbmaps>
+		<fbmap name="Ta">
+			<vars>
+				<var name="EO1" at="3" size="1"/>
+				<var name="EI1" at="4" size="1"/>
+			</vars>
+		</fbmap>
+	</fbmaps>
+
+	<connections>
+		<connection from="Ta1.EO1" to="Ta.EI2" />
+		<connection from="START.COLD" to="Ta1.EI1" />
+	</connections>
+	
+
+</devicemem>

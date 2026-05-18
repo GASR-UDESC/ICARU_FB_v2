@@ -1,0 +1,28 @@
+<Request ID='0' Action='CREATE'>
+  <FB Name='SUB_1' Type='SUBSCRIBER'/>
+</Request>
+
+<Request ID='1' Action='CREATE'>
+  <FB Name='CONTROL' Type='TMP_CONTROL'/>
+</Request>
+
+<Request ID='2' Action='CREATE'>
+  <FB Name='RELE' Type='IO_WRITER'/>
+</Request>
+
+<Request ID='3' Action='CREATE'>
+  <Connection Source='START.COLD' Destination='CONTROL.INIT'/>
+</Request>
+
+<Request ID='4' Action='CREATE'>
+  <Connection Source='SUB_1.RSP' Destination='CONTROL.ACT'/>
+</Request>
+
+<Request ID='5' Action='CREATE'>
+  <Connection Source='SUB_1.RD_1' Destination='CONTROL.TMP'/>
+</Request>
+
+<Request ID='6' Action='CREATE'>
+  <Connection Source='CONTROL.Q' Destination='RELE.SD_1'/>
+</Request>
+

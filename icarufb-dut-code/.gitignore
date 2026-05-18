@@ -1,0 +1,6 @@
+*.pyc
+temp/*
+*.*~
+stcompiler/obj/Debug/*.o
+stcompiler/bin/Debug/*.o
+

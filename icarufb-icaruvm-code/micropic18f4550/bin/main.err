@@ -1,0 +1,6 @@
+>>> Warning 202 "micropic18f4550\hdw.h" Line 17(5,8): Variable never used:   rs232_errors
+>>> Warning 202 "C:\Users\LeandroP\Dropbox\workspacegeneric\icarufb-icaruvm-code\main.c" Line 321(11,18): Variable never used:   ret_var
+>>> Warning 202 "C:\Users\LeandroP\Dropbox\workspacegeneric\icarufb-icaruvm-code\main.c" Line 324(10,15): Variable never used:   instr
+>>> Warning 202 "C:\Users\LeandroP\Dropbox\workspacegeneric\icarufb-icaruvm-code\handlenet.c" Line 83(6,7): Variable never used:   w
+      Memory usage:   ROM=42%      RAM=81% - 86%
+      0 Errors,  4 Warnings.
