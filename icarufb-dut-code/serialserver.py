@@ -130,7 +130,7 @@ def serialIn_thread():
 						pass
 					else:
 						#send to all clients
-						print ("ACK RECEIVED:")
+						print ("PACK RECEIVED:")
 						printHex(pack)
 						delc = []
 						ind=0
