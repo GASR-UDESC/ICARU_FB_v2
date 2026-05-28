@@ -45,11 +45,8 @@ import icaru_com
 icaru_com.connect(True)
 #import iecvmnet as inet
 
-def str2hex(str):
-	h = ""
-	for c in str:
-		h = h + "%02X" % (ord(c))
-	return h
+def str2hex(data):
+	return ' '.join(f'{b:02X}' for b in data)
 
 """
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
@@ -60,21 +57,27 @@ sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 20)
 while True:
 	p = icaru_com.readPack()
 	if p != None:
-		pack = [ord(i) for i in p]
+		pack = list(p)
 		if(pack[2]==202):
 			print (pack)
-			data = ''
+			data = b''
 			"""
 			for i in range(5):
 				data = data + chr(0x40 |  (pack[i+3] & 1))
 			"""
-			data = data + chr(0x40 |  (pack[3] & 1)) + chr(0x40 |  (pack[4] & 1))+ chr(05)+ chr(05)+ chr(05)
+			data += bytes([
+				0x40 | (pack[3] & 1),
+				0x40 | (pack[4] & 1),
+				0x05,
+				0x05,
+				0x05
+			])
 			#data = data + chr(0x40 |  (pack[3] & 1)) +  chr(05)+ chr(05)+ chr(05)+ chr(05)
 
 				#data = data + chr(0x51)+ chr(pack[i+3])
 			#sock.send(data)
-			print ("DATA: "+data+' len: %d' % (len(data) ))
-			print (tr2hex(data))
+			print(f"DATA: {data} len: {len(data)}")
+			print(str2hex(data))
 			#sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 			sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 			ttl = struct.pack('b',1)

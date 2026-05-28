@@ -27,7 +27,7 @@
 import os
 import socket
 import xml.etree.ElementTree as ET
-import thread
+import threading
 import sys
 import icaru_compiler
 import icaru_mapper 
@@ -104,7 +104,7 @@ def client_thread(sock):
 	while 1:
 		print ('Waiting for more data...')
 		rcv =  sock.recv(2048)
-		if rcv == '':
+		if rcv == b'':
 			break
 		received = rcv
 		#print "RCV: "+received
@@ -115,29 +115,30 @@ def client_thread(sock):
 		#print ord(received[4])
 		#print ord(received[5])
 		
-		if ord(received[0]) == 0x50:
-			size1 = ((ord(received[1])<<8) | ord(received[2]))
+		if received[0] == 0x50:
+			size1 = (received[1] << 8) | received[2]
 			received = received[3:]
 			received = received[size1:]
-			if ord(received[0]) == 0x50:
-				size = ((ord(received[1])<<8) | ord(received[2]))
+			if received[0] == 0x50:
+				size = (received[1] << 8) | received[2]
 				#print 'SIZE: ',size
-				while(len(received[3:]) < size):
+				while len(received[3:]) < size:
 					received = received + sock.recv(2048)
 					
 				cmd = ''
 				received = received[3:]
 				while len(cmd) < size:
-					cmd = cmd + received[0]
+					cmd += bytes([received[0]])
 					received = received[1:]
 		
 		
 		try:
-			while  len(cmd)>0 and cmd[0] != '<': 
+			while len(cmd) > 0 and cmd[:1] != b'<':
 				#print "CMD: %X" % (ord(cmd[0]))
 				cmd = cmd[1:]
-			cmd = cmd.replace('\n','')
-			cmd = cmd.replace('\r','')
+			cmd = cmd.replace(b'\n', b'')
+			cmd = cmd.replace(b'\r', b'')
+			cmd = cmd.decode()
 			#cmd = cmd.replace('  ',' ')
 			root = ET.fromstring(cmd)
 			resp=''
@@ -175,12 +176,12 @@ def client_thread(sock):
 				
 			l = len(resp)	
 			#resp = chr(0x50)+chr(0)+chr(0)+chr(0x50)+chr(l>>8)+chr(l&0xFF)+resp
-			resp = chr(0x50)+chr(l>>8)+chr(l&0xFF)+resp
+			resp = bytes([0x50, l >> 8, l & 0xFF]) + resp.encode()
 			print ('RUN: '+cmd) 
 			
-			print ('RESP: ['+resp+']')
+			print('RESP:', resp)
 			print (' ')
-			cmd = ''
+			cmd = b''
 			sock.send(resp)
 		except Exception as e:
 			print ('Parse error... ')
@@ -200,7 +201,7 @@ DEVICE_ADDR=0
 LIBRARY_DIR='.'
 MAPFNAME='map.map'
 
-while 1:
+while True:
 
 	if (not flagExist('-m')) | (not flagExist('-da')) | (not flagExist('-dm')) | (not flagExist('-l')):
 		printUsage()
@@ -224,7 +225,8 @@ while 1:
 	print ('Waiting client...',)
 	(clientsocket, address) = serversocket.accept()
 	print ('OK')
-	thread.start_new_thread(client_thread, (clientsocket,))
+	client = threading.Thread(target=client_thread, args=(clientsocket,))
+	client.start()
 	
 		
 	

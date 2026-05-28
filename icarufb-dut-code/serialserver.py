@@ -4,7 +4,7 @@
 
 
 import socket
-import thread
+import threading
 import serial
 from flags import *
 from time import sleep
@@ -26,22 +26,30 @@ OUTBUF=[]
 SERIALPORT = None
 
 def printHex(p):
-	print (("%X"%(i)) for i in p)
+	print(' '.join(f'{i:02X}' for i in p))
 	
-_socketgetbytes=[]
-def socketget(bytes, sock):
+_socketgetbytes = []
+
+def socketget(num_bytes, sock):
 	global _socketgetbytes
-	while(len(_socketgetbytes) < bytes):
-		_socketgetbytes = _socketgetbytes + list(sock.recv(4096))
-		#print "SOCKBYTES: ",printHex([ord(i) for i in _socketgetbytes])
-		if _socketgetbytes == '' or _socketgetbytes == None or len(_socketgetbytes)==0:
+
+	while len(_socketgetbytes) < num_bytes:
+
+		data = sock.recv(4096)
+
+		if not data:
 			return None
-	r= _socketgetbytes[:bytes]
-	for i in range(bytes):
-		del _socketgetbytes[0]
-	if len(r)>1:
-		return [ord(i) for i in r]
-	return ord(r[0])
+
+		_socketgetbytes += list(data)
+
+	r = _socketgetbytes[:num_bytes]
+
+	del _socketgetbytes[:num_bytes]
+
+	if len(r) > 1:
+		return r
+
+	return r[0]
 
 def readPack(comsock):
 	data = []
@@ -100,15 +108,15 @@ def client_thread(sock):
 def serialIn_thread():
 	while True:
 		pack = []
-		c = ord(SERIALPORT.read(1))
+		c = SERIALPORT.read(1)[0]
 		if c == 0xAA:
-			c = ord(SERIALPORT.read(1))
+			c = SERIALPORT.read(1)[0]
 			if c == 0x55:
 				pack.append(0xAA)
 				pack.append(0x55)
 				for i in range(6):
-					pack.append(ord(SERIALPORT.read(1)))
-				c = ord(SERIALPORT.read(1))
+					pack.append(SERIALPORT.read(1)[0])
+				c = SERIALPORT.read(1)[0]
 				if c == 0x55:
 					pack.append(0x55)
 					if(pack[2] == 0x01 and pack[3] == 0xF1 and pack[4] == 0xF1):
@@ -116,7 +124,7 @@ def serialIn_thread():
 							if USERTS:
 								SERIALPORT.setRTS(True)
 								sleep(0.002)
-							SERIALPORT.write(''.join([chr(i) for i in OUTBUF[0][0]]))
+							SERIALPORT.write(bytes(OUTBUF[0][0]))
 							#tk = chr(0xAA) + chr(0x55) + chr(0x01) + chr(0xF1) + chr(0xF1) + chr(0) + chr(0)+ chr(0x55)
 							if USERTS:
 								while(SERIALPORT.outWaiting()>0):
@@ -138,7 +146,7 @@ def serialIn_thread():
 							try:
 								print ('RESPONDING: ')
 								printHex(pack)
-								c.send(''.join([chr(i) for i in pack]))
+								c.send(bytes(pack))
 							except Exception as e:
 								delc.append(ind)
 								print (e)
@@ -154,7 +162,7 @@ def serialIn_thread():
 							try:
 								#print 'RESPONDING: '
 								#printHex(pack)
-								c.send(''.join([chr(i) for i in pack]))
+								c.send(bytes(pack))
 							except Exception as e:
 								delc.append(ind)
 								print (e)
@@ -166,7 +174,7 @@ def serialIn_thread():
 							del CLIENTS[i]
 								
 		else:
-			print (chr(c),)
+			print(chr(c))
 					
 					
 				
@@ -199,13 +207,16 @@ SERIALPORT = serial.Serial(int(PORTNUM)-1)
 SERIALPORT.setRTS(False)
 SERIALPORT.setBaudrate(38400)
 
-thread.start_new_thread(serialIn_thread, ())
+threading.Thread(target=serialIn_thread).start()
 	
-while 1:
+while True:
 	print ('Waiting client...',)
 	(clientsocket, address) = serversocket.accept()
 	print ('OK')
-	thread.start_new_thread(client_thread, (clientsocket,))
+	threading.Thread(
+		target=client_thread,
+		args=(clientsocket,)
+	).start()
 	#CLIENTS.append(clientsocket)
 	
 	
